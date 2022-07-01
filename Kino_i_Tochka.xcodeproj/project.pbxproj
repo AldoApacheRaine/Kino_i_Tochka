@@ -7,23 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF2245A0E2C0E87A1C371237 /* Pods_Kino_i_Tochka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137A273F4C166626E01603C0 /* Pods_Kino_i_Tochka.framework */; };
+		EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */; };
+		EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BE286F6F6B00C76AC8 /* Network.swift */; };
+		EC67B0C2286F9EF600C76AC8 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = EC67B0C1286F9EF600C76AC8 /* SwiftyJSON */; };
 		ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E09286F493500C7F7AB /* AppDelegate.swift */; };
 		ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */; };
-		ECC76E0E286F493500C7F7AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0D286F493500C7F7AB /* ViewController.swift */; };
+		ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */; };
 		ECC76E11286F493500C7F7AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E0F286F493500C7F7AB /* Main.storyboard */; };
 		ECC76E13286F493600C7F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E12286F493600C7F7AB /* Assets.xcassets */; };
 		ECC76E16286F493600C7F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */; };
+		ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E21286F51FE00C7F7AB /* Links.swift */; };
+		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		137A273F4C166626E01603C0 /* Pods_Kino_i_Tochka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kino_i_Tochka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD35B520DD472F69A392628 /* Pods-Kino_i_Tochka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kino_i_Tochka.debug.xcconfig"; path = "Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka.debug.xcconfig"; sourceTree = "<group>"; };
+		BE90AE0581DAEDA8003401D6 /* Pods-Kino_i_Tochka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kino_i_Tochka.release.xcconfig"; path = "Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka.release.xcconfig"; sourceTree = "<group>"; };
+		EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		EC67B0BE286F6F6B00C76AC8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino_i_Tochka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC76E09286F493500C7F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ECC76E0D286F493500C7F7AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		ECC76E10286F493500C7F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECC76E12286F493600C7F7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECC76E15286F493600C7F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC76E17286F493600C7F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECC76E21286F51FE00C7F7AB /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +44,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC67B0C2286F9EF600C76AC8 /* SwiftyJSON in Frameworks */,
+				DF2245A0E2C0E87A1C371237 /* Pods_Kino_i_Tochka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00D99927226391CDA20CC257 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				137A273F4C166626E01603C0 /* Pods_Kino_i_Tochka.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7421A02727FD91CBDB00722E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DD35B520DD472F69A392628 /* Pods-Kino_i_Tochka.debug.xcconfig */,
+				BE90AE0581DAEDA8003401D6 /* Pods-Kino_i_Tochka.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EC67B0BC286F6F2800C76AC8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EC67B0BD286F6F3500C76AC8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EC67B0BE286F6F6B00C76AC8 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		ECC76DFD286F493500C7F7AB = {
 			isa = PBXGroup;
 			children = (
 				ECC76E08286F493500C7F7AB /* Kino_i_Tochka */,
 				ECC76E07286F493500C7F7AB /* Products */,
+				7421A02727FD91CBDB00722E /* Pods */,
+				00D99927226391CDA20CC257 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +106,51 @@
 		ECC76E08286F493500C7F7AB /* Kino_i_Tochka */ = {
 			isa = PBXGroup;
 			children = (
+				ECC76E1D286F514600C7F7AB /* Application */,
+				EC67B0BC286F6F2800C76AC8 /* Models */,
+				ECC76E20286F519200C7F7AB /* Views */,
+				ECC76E1F286F517D00C7F7AB /* ViewControllers */,
+				EC67B0BD286F6F3500C76AC8 /* Network */,
+				ECC76E21286F51FE00C7F7AB /* Links.swift */,
+				ECC76E1E286F516400C7F7AB /* Resources */,
+			);
+			path = Kino_i_Tochka;
+			sourceTree = "<group>";
+		};
+		ECC76E1D286F514600C7F7AB /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				ECC76E09286F493500C7F7AB /* AppDelegate.swift */,
 				ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */,
-				ECC76E0D286F493500C7F7AB /* ViewController.swift */,
-				ECC76E0F286F493500C7F7AB /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		ECC76E1E286F516400C7F7AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				ECC76E12286F493600C7F7AB /* Assets.xcassets */,
 				ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */,
 				ECC76E17286F493600C7F7AB /* Info.plist */,
 			);
-			path = Kino_i_Tochka;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ECC76E1F286F517D00C7F7AB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ECC76E20286F519200C7F7AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ECC76E0F286F493500C7F7AB /* Main.storyboard */,
+				EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +160,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ECC76E1A286F493600C7F7AB /* Build configuration list for PBXNativeTarget "Kino_i_Tochka" */;
 			buildPhases = (
+				12AFC86B35A1FB0AB6BE62E0 /* [CP] Check Pods Manifest.lock */,
 				ECC76E02286F493500C7F7AB /* Sources */,
 				ECC76E03286F493500C7F7AB /* Frameworks */,
 				ECC76E04286F493500C7F7AB /* Resources */,
+				8983C7766345F880393A2D28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Kino_i_Tochka;
+			packageProductDependencies = (
+				EC67B0C1286F9EF600C76AC8 /* SwiftyJSON */,
+			);
 			productName = Kino_i_Tochka;
 			productReference = ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +202,9 @@
 				Base,
 			);
 			mainGroup = ECC76DFD286F493500C7F7AB;
+			packageReferences = (
+				EC67B0C0286F9EF600C76AC8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = ECC76E07286F493500C7F7AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,14 +227,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12AFC86B35A1FB0AB6BE62E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kino_i_Tochka-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8983C7766345F880393A2D28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ECC76E02286F493500C7F7AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECC76E0E286F493500C7F7AB /* ViewController.swift in Sources */,
+				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
+				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
+				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
+				EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */,
+				ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,6 +422,7 @@
 		};
 		ECC76E1B286F493600C7F7AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DD35B520DD472F69A392628 /* Pods-Kino_i_Tochka.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -289,12 +430,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DTN97VNT76;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Kino_i_Tochka/Info.plist;
+				INFOPLIST_FILE = Kino_i_Tochka/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,6 +452,7 @@
 		};
 		ECC76E1C286F493600C7F7AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE90AE0581DAEDA8003401D6 /* Pods-Kino_i_Tochka.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,12 +460,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DTN97VNT76;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Kino_i_Tochka/Info.plist;
+				INFOPLIST_FILE = Kino_i_Tochka/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +502,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC67B0C0286F9EF600C76AC8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC67B0C1286F9EF600C76AC8 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC67B0C0286F9EF600C76AC8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECC76DFE286F493500C7F7AB /* Project object */;
 }
