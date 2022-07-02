@@ -16,7 +16,7 @@ struct Doc: Codable {
     let rating: Rating
     let id: Int
     let movieLength: Int?
-    let name: String
+    let name: String?
     let year: Int
 }
 

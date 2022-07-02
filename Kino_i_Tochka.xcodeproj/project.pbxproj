@@ -10,7 +10,8 @@
 		DF2245A0E2C0E87A1C371237 /* Pods_Kino_i_Tochka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137A273F4C166626E01603C0 /* Pods_Kino_i_Tochka.framework */; };
 		EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */; };
 		EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BE286F6F6B00C76AC8 /* Network.swift */; };
-		EC67B0C2286F9EF600C76AC8 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = EC67B0C1286F9EF600C76AC8 /* SwiftyJSON */; };
+		ECA1862F28709F4600399989 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1862E28709F4600399989 /* DetailViewController.swift */; };
+		ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA186302870A48A00399989 /* DetailMovieModel.swift */; };
 		ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E09286F493500C7F7AB /* AppDelegate.swift */; };
 		ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */; };
 		ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */; };
@@ -27,6 +28,8 @@
 		BE90AE0581DAEDA8003401D6 /* Pods-Kino_i_Tochka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kino_i_Tochka.release.xcconfig"; path = "Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka.release.xcconfig"; sourceTree = "<group>"; };
 		EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EC67B0BE286F6F6B00C76AC8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		ECA1862E28709F4600399989 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ECA186302870A48A00399989 /* DetailMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieModel.swift; sourceTree = "<group>"; };
 		ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino_i_Tochka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC76E09286F493500C7F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC67B0C2286F9EF600C76AC8 /* SwiftyJSON in Frameworks */,
 				DF2245A0E2C0E87A1C371237 /* Pods_Kino_i_Tochka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */,
+				ECA186302870A48A00399989 /* DetailMovieModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -83,6 +86,15 @@
 				EC67B0BE286F6F6B00C76AC8 /* Network.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		ECA1862D287095E600399989 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				ECC76E0F286F493500C7F7AB /* Main.storyboard */,
+				ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 		ECC76DFD286F493500C7F7AB = {
@@ -130,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				ECC76E12286F493600C7F7AB /* Assets.xcassets */,
-				ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */,
 				ECC76E17286F493600C7F7AB /* Info.plist */,
 			);
 			path = Resources;
@@ -140,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */,
+				ECA1862E28709F4600399989 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,7 +159,7 @@
 		ECC76E20286F519200C7F7AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ECC76E0F286F493500C7F7AB /* Main.storyboard */,
+				ECA1862D287095E600399989 /* StoryBoard */,
 				EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */,
 			);
 			path = Views;
@@ -172,7 +184,6 @@
 			);
 			name = Kino_i_Tochka;
 			packageProductDependencies = (
-				EC67B0C1286F9EF600C76AC8 /* SwiftyJSON */,
 			);
 			productName = Kino_i_Tochka;
 			productReference = ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */;
@@ -203,7 +214,6 @@
 			);
 			mainGroup = ECC76DFD286F493500C7F7AB;
 			packageReferences = (
-				EC67B0C0286F9EF600C76AC8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = ECC76E07286F493500C7F7AB /* Products */;
 			projectDirPath = "";
@@ -274,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */,
 				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
@@ -281,6 +292,7 @@
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
 				EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */,
 				ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */,
+				ECA1862F28709F4600399989 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +446,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -446,7 +459,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -464,6 +477,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -476,7 +490,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -502,25 +516,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		EC67B0C0286F9EF600C76AC8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EC67B0C1286F9EF600C76AC8 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EC67B0C0286F9EF600C76AC8 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECC76DFE286F493500C7F7AB /* Project object */;
 }

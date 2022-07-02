@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -23,5 +24,25 @@ class MovieTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-
+    
+    func cellConfugure(movie: Doc){
+        if let name = movie.name {
+            movieNameLabel.text = name
+        } else {
+            movieNameLabel.text = "No data"
+        }
+        
+        movieYearLabel.text = String(movie.year)
+        movieRatingLabel.text = String(movie.rating.kp)
+        
+        if let lenght = movie.movieLength {
+            movieLenghtLabel.text = String(lenght)
+        } else {
+            movieLenghtLabel.text = "no data"
+        }
+        
+        let urlString = movie.poster.url
+        let url = URL(string: urlString)
+        moviePosterImageView.kf.setImage(with: url)
+    }
 }
