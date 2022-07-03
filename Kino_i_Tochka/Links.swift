@@ -11,12 +11,12 @@ import Foundation
 //&sortField=year&sortType=1
 //https://api.kinopoisk.dev/movie?field=id&search=326&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B
 
-class Links {
-    static let allLink = "https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2022&field=typeNumber&search=1&sortField=year&sortType=-1&limit=100&page=1&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
-    
-    static let galaxyMovieLink = "https://api.kinopoisk.dev/movie?field=id&search=841263&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
-    
-    
+//class Links {
+//    static let allLink = "https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2022&field=typeNumber&search=1&sortField=year&sortType=-1&limit=100&page=1&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
+//
+//    static let galaxyMovieLink = "https://api.kinopoisk.dev/movie?field=id&search=326&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
+//
+//
     
     
     
@@ -32,4 +32,4 @@ class Links {
 //    static let detailLink = "https://api.kinopoisk.dev/movie?field=id&search="
 //    static let detailId = ""
     
-}
+//}

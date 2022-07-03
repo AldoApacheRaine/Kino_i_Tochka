@@ -8,14 +8,9 @@
 import Foundation
 
 struct DetailMovie: Codable {
-    let poster: Poster
-    let rating: Rating
-    let videos: Videos?
+    let videos: Videos
     let genres: [Genres]
-    let description: String
-    let movieLength: Int
-    let name: String
-    let year: Int
+    let persons: [Persons]
 }
 
 struct Videos: Codable {
@@ -28,5 +23,12 @@ struct Trailer: Codable {
 
 struct Genres: Codable {
     let name: String
+}
+
+struct Persons: Codable {
+    let name: String
+    let description: String?
+    let enProfession: String
+    let photo: String
 }
 

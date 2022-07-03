@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -41,8 +40,6 @@ class MovieTableViewCell: UITableViewCell {
             movieLenghtLabel.text = "no data"
         }
         
-        let urlString = movie.poster.url
-        let url = URL(string: urlString)
-        moviePosterImageView.kf.setImage(with: url)
+        moviePosterImageView.setImageFromUrl(imageUrl: movie.poster.url)
     }
 }

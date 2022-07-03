@@ -17,6 +17,7 @@ struct Doc: Codable {
     let id: Int
     let movieLength: Int?
     let name: String?
+    let description: String?
     let year: Int
 }
 
