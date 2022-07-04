@@ -12,6 +12,7 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     
     var moviesData: [Doc] = []
+    private let cell = MovieTableViewCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,10 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 182
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? DetailViewController {
             if let cell = sender as? MovieTableViewCell, let index = moviesTableView.indexPath(for: cell)?.row{
@@ -51,6 +56,5 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
-    
 }
 

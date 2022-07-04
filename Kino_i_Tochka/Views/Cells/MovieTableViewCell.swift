@@ -9,9 +9,10 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
-    @IBOutlet weak var movieLenghtLabel: UILabel!
+//    @IBOutlet weak var movieLenghtLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
     
@@ -24,6 +25,9 @@ class MovieTableViewCell: UITableViewCell {
 
     }
     
+    @IBAction func favoritesButtonTapped(_ sender: Any) {
+        print("Like Tapped")
+    }
     func cellConfugure(movie: Doc){
         if let name = movie.name {
             movieNameLabel.text = name
@@ -34,11 +38,11 @@ class MovieTableViewCell: UITableViewCell {
         movieYearLabel.text = String(movie.year)
         movieRatingLabel.text = String(movie.rating.kp)
         
-        if let lenght = movie.movieLength {
-            movieLenghtLabel.text = String(lenght)
-        } else {
-            movieLenghtLabel.text = "no data"
-        }
+//        if let lenght = movie.movieLength {
+//            movieLenghtLabel.text = String(lenght)
+//        } else {
+//            movieLenghtLabel.text = "no data"
+//        }
         
         moviePosterImageView.setImageFromUrl(imageUrl: movie.poster.url)
     }

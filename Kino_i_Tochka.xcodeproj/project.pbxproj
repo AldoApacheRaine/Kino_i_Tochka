@@ -94,6 +94,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		EC9697A0287357D7005FDF89 /* UIKit + Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ECA217172871C2B900534A65 /* UIImageView + Extension.swift */,
+			);
+			path = "UIKit + Extensions";
+			sourceTree = "<group>";
+		};
 		ECA1862D287095E600399989 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +148,8 @@
 				ECC76E1F286F517D00C7F7AB /* ViewControllers */,
 				EC67B0BD286F6F3500C76AC8 /* Network */,
 				ECC76E21286F51FE00C7F7AB /* Links.swift */,
+				EC9697A0287357D7005FDF89 /* UIKit + Extensions */,
 				ECC76E1E286F516400C7F7AB /* Resources */,
-				ECA217172871C2B900534A65 /* UIImageView + Extension.swift */,
 			);
 			path = Kino_i_Tochka;
 			sourceTree = "<group>";
