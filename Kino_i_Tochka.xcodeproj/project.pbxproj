@@ -10,10 +10,10 @@
 		DF2245A0E2C0E87A1C371237 /* Pods_Kino_i_Tochka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137A273F4C166626E01603C0 /* Pods_Kino_i_Tochka.framework */; };
 		EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */; };
 		EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BE286F6F6B00C76AC8 /* Network.swift */; };
+		EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */; };
 		ECA1862F28709F4600399989 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1862E28709F4600399989 /* DetailViewController.swift */; };
 		ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA186302870A48A00399989 /* DetailMovieModel.swift */; };
 		ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA217172871C2B900534A65 /* UIImageView + Extension.swift */; };
-		ECA2173E2871F68700534A65 /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA2173D2871F68700534A65 /* GenresCollectionViewCell.swift */; };
 		ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */; };
 		ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E09286F493500C7F7AB /* AppDelegate.swift */; };
 		ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */; };
@@ -31,10 +31,10 @@
 		BE90AE0581DAEDA8003401D6 /* Pods-Kino_i_Tochka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kino_i_Tochka.release.xcconfig"; path = "Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka.release.xcconfig"; sourceTree = "<group>"; };
 		EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EC67B0BE286F6F6B00C76AC8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECA1862E28709F4600399989 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ECA186302870A48A00399989 /* DetailMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieModel.swift; sourceTree = "<group>"; };
 		ECA217172871C2B900534A65 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
-		ECA2173D2871F68700534A65 /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino_i_Tochka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC76E09286F493500C7F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 		ECA217412872159700534A65 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */,
 				EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */,
-				ECA2173D2871F68700534A65 /* GenresCollectionViewCell.swift */,
 				ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -313,8 +313,8 @@
 				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
+				EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */,
 				ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */,
-				ECA2173E2871F68700534A65 /* GenresCollectionViewCell.swift in Sources */,
 				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,
 				ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,

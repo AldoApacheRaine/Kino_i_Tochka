@@ -12,13 +12,16 @@ class DetailViewController: UIViewController {
     var movieData: DetailMovie?
     var movie = [Doc]()
     
-    @IBOutlet weak var detailImageView: UIImageView!
+    @IBOutlet weak var detailBackImageView: UIImageView!
     @IBOutlet weak var detailNameLabel: UILabel!
     @IBOutlet weak var detailYearLabel: UILabel!
+    @IBOutlet weak var detailLenghtLabel: UILabel!
     @IBOutlet weak var detailRatingLabel: UILabel!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var personsCollectionView: UICollectionView!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,12 @@ class DetailViewController: UIViewController {
         setPersonCollection()
     }
     
+    @IBAction func likeButtonTapped(_ sender: Any) {
+        print("Add to favorite")
+    }
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
     private func setGenresCollection() {
         genresCollectionView.delegate = self
         genresCollectionView.dataSource = self
@@ -51,10 +60,13 @@ class DetailViewController: UIViewController {
         detailYearLabel?.text = String(movie.first?.year ?? 0)
         detailDescriptionLabel.text = movie.first?.description
         detailRatingLabel.text = String(movie.first?.rating.kp ?? 0)
-        detailImageView.setImageFromUrl(imageUrl: (movie.first?.poster.url)!)
+        detailBackImageView.setImageFromUrl(imageUrl: (movie.first?.poster.url)!)
+        detailLenghtLabel.text = String(movie.first?.movieLength ?? 0)
     }
     
 }
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -80,3 +92,15 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return UICollectionViewCell()
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+//extension DetailViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == genresCollectionView {
+//           return CGSize(width: 40,
+//               height: collectionView.frame.height)
+//        }
+//        return CGSize(width: 120, height: 150)
+//    }
+//}
