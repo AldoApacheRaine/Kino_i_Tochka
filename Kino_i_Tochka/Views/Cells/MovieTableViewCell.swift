@@ -38,11 +38,10 @@ class MovieTableViewCell: UITableViewCell {
         movieYearLabel.text = String(movie.year)
         movieRatingLabel.text = String(movie.rating.kp)
         
-        if let lenght = movie.movieLength {
-            movieLenghtLabel.text = String(lenght)
-        } else {
-            movieLenghtLabel.text = "no data"
-        }
+        let (hour, min) = { (mins: Int) -> (Int, Int) in
+            return (mins / 60, mins % 60)}(movie.movieLength ?? 0)
+        
+            movieLenghtLabel.text = "\(hour) ч \(min) мин"
         
         moviePosterImageView.setImageFromUrl(imageUrl: movie.poster.url)
     }

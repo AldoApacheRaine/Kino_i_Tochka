@@ -61,7 +61,9 @@ class DetailViewController: UIViewController {
         detailDescriptionLabel.text = movie.first?.description
         detailRatingLabel.text = String(movie.first?.rating.kp ?? 0)
         detailBackImageView.setImageFromUrl(imageUrl: (movie.first?.poster.url)!)
-        detailLenghtLabel.text = String(movie.first?.movieLength ?? 0)
+        let (hour, min) = { (mins: Int) -> (Int, Int) in
+            return (mins / 60, mins % 60)}(movie.first?.movieLength ?? 0)
+        detailLenghtLabel.text = "\(hour) ч \(min) мин"
     }
     
 }
@@ -69,14 +71,14 @@ class DetailViewController: UIViewController {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == personsCollectionView {
             return movieData?.persons.count ?? 0
         }
         return movieData?.genres.count ?? 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == personsCollectionView {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "personCell", for: indexPath) as? PersonCollectionViewCell {
@@ -93,14 +95,3 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
-//extension DetailViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == genresCollectionView {
-//           return CGSize(width: 40,
-//               height: collectionView.frame.height)
-//        }
-//        return CGSize(width: 120, height: 150)
-//    }
-//}
