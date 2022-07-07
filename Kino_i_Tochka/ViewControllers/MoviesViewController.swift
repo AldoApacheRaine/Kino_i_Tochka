@@ -17,6 +17,7 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        setNavigationBar()
     }
     
     private func setTableView() {
@@ -27,6 +28,14 @@ class MoviesViewController: UIViewController {
             self.moviesData = fechedMovieList
             self.moviesTableView.reloadData()
         })
+    }
+    
+    private func setNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
     }
 }
 

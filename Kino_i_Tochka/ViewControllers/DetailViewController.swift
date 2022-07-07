@@ -20,8 +20,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var personsCollectionView: UICollectionView!
-    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    
+    lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        let viewColor: UIColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 1)
+        
+        gradient.type = .axial
+        gradient.colors = [
+            UIColor.clear.cgColor,
+            viewColor.withAlphaComponent(1).cgColor,
+            viewColor.cgColor
+        ]
+        gradient.locations = [0.65, 0.85, 1]
+        return gradient
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +44,16 @@ class DetailViewController: UIViewController {
         setDetails()
         setGenresCollection()
         setPersonCollection()
+        setGradientOnImage()
+        
+        gradient.frame = detailBackImageView.bounds
+            detailBackImageView.layer.addSublayer(gradient)
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
         print("Add to favorite")
     }
-    @IBAction func closeButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
-    }
+    
     private func setGenresCollection() {
         genresCollectionView.delegate = self
         genresCollectionView.dataSource = self
@@ -64,6 +81,26 @@ class DetailViewController: UIViewController {
         let (hour, min) = { (mins: Int) -> (Int, Int) in
             return (mins / 60, mins % 60)}(movie.first?.movieLength ?? 0)
         detailLenghtLabel.text = "\(hour) ч \(min) мин"
+    }
+    
+    private func setGradientOnImage() {
+//        self.detailBackImageView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+//
+//        let width = self.detailBackImageView.bounds.width
+//        let height = self.detailBackImageView.bounds.height
+//        let sHeight:CGFloat = height * 0.5
+//        let shadow = UIColor.black.withAlphaComponent(1).cgColor
+//
+//        // Add gradient bar for image on top
+//        let topImageGradient = CAGradientLayer()
+//        topImageGradient.frame = CGRect(x: 0, y: 0, width: width, height: sHeight)
+//        topImageGradient.colors = [shadow, UIColor.clear.cgColor]
+//        detailBackImageView.layer.insertSublayer(topImageGradient, at: 0)
+//
+//        let bottomImageGradient = CAGradientLayer()
+//        bottomImageGradient.frame = CGRect(x: 0, y: 1, width: width, height: sHeight)
+//        bottomImageGradient.colors = [UIColor.clear.cgColor, shadow]
+//        detailBackImageView.layer.insertSublayer(bottomImageGradient, at: 0)
     }
     
 }
