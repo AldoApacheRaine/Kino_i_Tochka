@@ -26,10 +26,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getDetails()
@@ -44,6 +40,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func likeButtonTapped(_ sender: Any) {
         setAndSaveRealmModel()
+        likeButton.tintColor = .red
     }
     
     private func setGenresCollection() {
@@ -104,10 +101,10 @@ class DetailViewController: UIViewController {
         
         RealmManager.shared.saveRealmModel(model: realmMovie)
     }
-    
+
     private func isFavorite() {
-        for i in realmMovieArray.indices {
-            if realmMovieArray[i].realmId == movie.first?.id {
+        for i in realmMovieArray {
+            if i.realmId == movie.first?.id {
                 likeButton.tintColor = .red
             }
         }

@@ -19,6 +19,11 @@ class MoviesViewController: UIViewController {
         setNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.moviesTableView.reloadData()
+    }
+    
     private func setTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self

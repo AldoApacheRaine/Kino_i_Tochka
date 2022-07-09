@@ -19,6 +19,7 @@ class MovieTableViewCell: UITableViewCell {
     
     private let localRealm = try! Realm()
     private var realmMovieArray: Results<RealmMovie>!
+    private var realmIdArray: [Int] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +34,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBAction func favoritesButtonTapped(_ sender: Any) {
         print("Like Tapped")
     }
+    
     func cellConfugure(movie: Doc){
         if let name = movie.name {
             movieNameLabel.text = name
@@ -44,13 +46,15 @@ class MovieTableViewCell: UITableViewCell {
         movieRatingLabel.text = String(movie.rating.kp)
         
         for i in realmMovieArray {
-//            print(i.realmId)
-            if i.realmId == movie.id {
-                favoritesButton.tintColor = .red
-//                print("Realm id - \(realmMovieArray[i].realmId)")
-//                print("Cell id - \(movie.id)")
-
+            if !realmIdArray.contains(i.realmId) {
+                realmIdArray.append(i.realmId)
             }
+            
+        }
+        if realmIdArray.contains(movie.id) {
+            favoritesButton.tintColor = .red
+        } else {
+            favoritesButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
         
         let (hour, min) = { (mins: Int) -> (Int, Int) in
