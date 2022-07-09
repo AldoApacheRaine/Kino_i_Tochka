@@ -17,6 +17,7 @@ class MoviesViewController: UIViewController {
         super.viewDidLoad()
         setTableView()
         setNavigationBar()
+        setNetwork()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,7 +28,9 @@ class MoviesViewController: UIViewController {
     private func setTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
-        
+    }
+    
+    private func setNetwork() {
         Network.network.fetchMovieList(completion: { (fechedMovieList: [Doc]) in
             self.moviesData = fechedMovieList
             self.moviesTableView.reloadData()

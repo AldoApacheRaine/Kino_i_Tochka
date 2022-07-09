@@ -10,12 +10,6 @@ import RealmSwift
 
 class DetailViewController: UIViewController {
     
-    var movieData: DetailMovie?
-    var movie = [Doc]()
-    private let localRealm = try! Realm()
-    private var realmMovie = RealmMovie()
-    private var realmMovieArray: Results<RealmMovie>!
-    
     @IBOutlet weak var detailBackImageView: UIImageView!
     @IBOutlet weak var detailNameLabel: UILabel!
     @IBOutlet weak var detailYearLabel: UILabel!
@@ -25,6 +19,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
+    
+    var movieData: DetailMovie?
+    var movie = [Doc]()
+    private let localRealm = try! Realm()
+    private var realmMovie = RealmMovie()
+    private var realmMovieArray: Results<RealmMovie>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +116,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if collectionView == personsCollectionView {
             return movieData?.persons.count ?? 0
         }
@@ -130,6 +131,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             return UICollectionViewCell()
         }
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genresCell", for: indexPath) as? GenresCollectionViewCell {
             cell.genreLabel.text = movieData?.genres[indexPath.item].name
             return cell

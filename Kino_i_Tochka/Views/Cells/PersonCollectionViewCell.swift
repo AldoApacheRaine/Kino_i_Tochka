@@ -24,7 +24,6 @@ class PersonCollectionViewCell: UICollectionViewCell {
         }
         
         personNameLabel.text = detail.name
-        
         personImageView.setImageFromUrl(imageUrl: detail.photo)
     }
 }

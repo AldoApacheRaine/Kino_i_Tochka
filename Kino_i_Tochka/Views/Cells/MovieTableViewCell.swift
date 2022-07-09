@@ -49,8 +49,8 @@ class MovieTableViewCell: UITableViewCell {
             if !realmIdArray.contains(i.realmId) {
                 realmIdArray.append(i.realmId)
             }
-            
         }
+        
         if realmIdArray.contains(movie.id) {
             favoritesButton.tintColor = .red
         } else {
