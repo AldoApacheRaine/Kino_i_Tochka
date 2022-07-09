@@ -12,7 +12,6 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     
     var moviesData: [Doc] = []
-    private let cell = MovieTableViewCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()

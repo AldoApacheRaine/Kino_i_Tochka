@@ -23,6 +23,8 @@
 		ECC76E16286F493600C7F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */; };
 		ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E21286F51FE00C7F7AB /* Links.swift */; };
 		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
+		ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E32878CED100FEF240 /* RealmModel.swift */; };
+		ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E62878D08900FEF240 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		ECC76E17286F493600C7F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECC76E21286F51FE00C7F7AB /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
+		ECDB61E32878CED100FEF240 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		ECDB61E62878D08900FEF240 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 			children = (
 				ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */,
 				ECA186302870A48A00399989 /* DetailMovieModel.swift */,
+				ECDB61E32878CED100FEF240 /* RealmModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				EC67B0BC286F6F2800C76AC8 /* Models */,
 				ECC76E20286F519200C7F7AB /* Views */,
 				ECC76E1F286F517D00C7F7AB /* ViewControllers */,
+				ECDB61E52878D05F00FEF240 /* Services */,
 				EC67B0BD286F6F3500C76AC8 /* Network */,
 				ECC76E21286F51FE00C7F7AB /* Links.swift */,
 				EC9697A0287357D7005FDF89 /* UIKit + Extensions */,
@@ -188,6 +194,14 @@
 				ECA217412872159700534A65 /* Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ECDB61E52878D05F00FEF240 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ECDB61E62878D08900FEF240 /* RealmManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,12 +328,14 @@
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
 				EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */,
+				ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */,
 				ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */,
 				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,
 				ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
 				EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */,
 				ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */,
+				ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */,
 				ECA1862F28709F4600399989 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

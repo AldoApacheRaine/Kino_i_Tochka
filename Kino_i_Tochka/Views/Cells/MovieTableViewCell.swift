@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MovieTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
@@ -16,13 +17,17 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
     
+    private let localRealm = try! Realm()
+    private var realmMovieArray: Results<RealmMovie>!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        realmMovieArray = localRealm.objects(RealmMovie.self)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     @IBAction func favoritesButtonTapped(_ sender: Any) {
@@ -38,10 +43,20 @@ class MovieTableViewCell: UITableViewCell {
         movieYearLabel.text = String(movie.year)
         movieRatingLabel.text = String(movie.rating.kp)
         
+        for i in realmMovieArray {
+//            print(i.realmId)
+            if i.realmId == movie.id {
+                favoritesButton.tintColor = .red
+//                print("Realm id - \(realmMovieArray[i].realmId)")
+//                print("Cell id - \(movie.id)")
+
+            }
+        }
+        
         let (hour, min) = { (mins: Int) -> (Int, Int) in
             return (mins / 60, mins % 60)}(movie.movieLength ?? 0)
         
-            movieLenghtLabel.text = "\(hour) ч \(min) мин"
+        movieLenghtLabel.text = "\(hour) ч \(min) мин"
         
         moviePosterImageView.setImageFromUrl(imageUrl: movie.poster.url)
     }

@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailViewController: UIViewController {
     
     var movieData: DetailMovie?
     var movie = [Doc]()
+    private let localRealm = try! Realm()
+    private var realmMovie = RealmMovie()
+    private var realmMovieArray: Results<RealmMovie>!
     
     @IBOutlet weak var detailBackImageView: UIImageView!
     @IBOutlet weak var detailNameLabel: UILabel!
@@ -22,19 +26,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
     
-    lazy var gradient: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        let viewColor: UIColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 1)
-        
-        gradient.type = .axial
-        gradient.colors = [
-            UIColor.clear.cgColor,
-            viewColor.withAlphaComponent(1).cgColor,
-            viewColor.cgColor
-        ]
-        gradient.locations = [0.65, 0.85, 1]
-        return gradient
-    }()
+    
     
     
     
@@ -46,12 +38,12 @@ class DetailViewController: UIViewController {
         setPersonCollection()
         setGradientOnImage()
         
-        gradient.frame = detailBackImageView.bounds
-            detailBackImageView.layer.addSublayer(gradient)
+        realmMovieArray = localRealm.objects(RealmMovie.self)
+        isFavorite()
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
-        print("Add to favorite")
+        setAndSaveRealmModel()
     }
     
     private func setGenresCollection() {
@@ -84,25 +76,42 @@ class DetailViewController: UIViewController {
     }
     
     private func setGradientOnImage() {
-//        self.detailBackImageView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
-//
-//        let width = self.detailBackImageView.bounds.width
-//        let height = self.detailBackImageView.bounds.height
-//        let sHeight:CGFloat = height * 0.5
-//        let shadow = UIColor.black.withAlphaComponent(1).cgColor
-//
-//        // Add gradient bar for image on top
-//        let topImageGradient = CAGradientLayer()
-//        topImageGradient.frame = CGRect(x: 0, y: 0, width: width, height: sHeight)
-//        topImageGradient.colors = [shadow, UIColor.clear.cgColor]
-//        detailBackImageView.layer.insertSublayer(topImageGradient, at: 0)
-//
-//        let bottomImageGradient = CAGradientLayer()
-//        bottomImageGradient.frame = CGRect(x: 0, y: 1, width: width, height: sHeight)
-//        bottomImageGradient.colors = [UIColor.clear.cgColor, shadow]
-//        detailBackImageView.layer.insertSublayer(bottomImageGradient, at: 0)
+        let gradient: CAGradientLayer = {
+            let gradient = CAGradientLayer()
+            let viewColor: UIColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 1)
+            gradient.type = .axial
+            gradient.colors = [
+                UIColor.clear.cgColor,
+                viewColor.withAlphaComponent(1).cgColor,
+                viewColor.cgColor
+            ]
+            gradient.locations = [0.65, 0.9, 1]
+            return gradient
+        }()
+        
+        gradient.frame = detailBackImageView.bounds
+        detailBackImageView.layer.addSublayer(gradient)
     }
     
+    private func setAndSaveRealmModel() {
+        realmMovie.realmName = movie.first?.name ?? "Unknown"
+        realmMovie.realmDescription = movie.first?.description ?? "Unknown"
+        realmMovie.realmId = movie.first?.id ?? 00
+        realmMovie.realmMovieLenght = movie.first?.movieLength ?? 00
+        realmMovie.realmPosterUrl = movie.first?.poster.url ?? "Unknown"
+        realmMovie.realmYear = movie.first?.year ?? 00
+        realmMovie.realmRatingKp = movie.first?.rating.kp ?? 00
+        
+        RealmManager.shared.saveRealmModel(model: realmMovie)
+    }
+    
+    private func isFavorite() {
+        for i in realmMovieArray.indices {
+            if realmMovieArray[i].realmId == movie.first?.id {
+                likeButton.tintColor = .red
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource

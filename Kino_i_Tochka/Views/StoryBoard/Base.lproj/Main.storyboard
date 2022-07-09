@@ -118,8 +118,8 @@
                                                         <constraint firstAttribute="width" constant="30" id="bKJ-ht-COX"/>
                                                         <constraint firstAttribute="height" constant="30" id="zt1-3H-h5c"/>
                                                     </constraints>
+                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <buttonConfiguration key="configuration" style="tinted" image="heart.fill" catalog="system" cornerStyle="capsule">
-                                                        <color key="baseForegroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
