@@ -12,6 +12,7 @@ class FavoritesViewController: UIViewController {
     
     
     @IBOutlet weak var favoritesTableView: UITableView!
+    let movieCell = MovieTableViewCell()
     
     private let localRealm = try! Realm()
     private var realmMovieArray: Results<RealmMovie>!
@@ -33,6 +34,8 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         realmMovieArray.count
@@ -45,5 +48,12 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let deleteModel = realmMovieArray[indexPath.row]
+        RealmManager.shared.deleteRealmModel(model: deleteModel)
+        
+        tableView.deleteRows(at: [indexPath], with: .fade)
+//        print(realmMovieArray)
     }
 }

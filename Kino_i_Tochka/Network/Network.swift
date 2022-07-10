@@ -12,8 +12,8 @@ final class Network {
     
     static let network = Network()
     
-    func fetchMovieList(completion: @escaping ([Doc]) -> Void) {
-        AF.request("https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2020&field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&limit=20&page=2&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B").responseDecodable(of: Movies.self) { response in
+    func fetchMovieList(url: String, completion: @escaping ([Doc]) -> Void) {
+        AF.request(url).responseDecodable(of: Movies.self) { response in
             if let movieList = try? response.result.get(){
                 completion(movieList.docs)
             }

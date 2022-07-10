@@ -9,6 +9,7 @@ import Foundation
 
 struct Movies: Codable {
     let docs: [Doc]
+    let pages: Int
 }
 
 struct Doc: Codable {

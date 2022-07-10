@@ -21,4 +21,10 @@ class RealmManager {
             localRealm.add(model)
         }
     }
+    
+    func deleteRealmModel(model: RealmMovie) {
+        try! localRealm.write {
+            localRealm.delete(model)
+        }
+    }
 }

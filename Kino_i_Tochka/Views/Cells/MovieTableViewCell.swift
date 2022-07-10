@@ -19,7 +19,7 @@ class MovieTableViewCell: UITableViewCell {
     
     private let localRealm = try! Realm()
     private var realmMovieArray: Results<RealmMovie>!
-    private var realmIdArray: [Int] = []
+    var realmIdArray: [Int] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,6 +53,8 @@ class MovieTableViewCell: UITableViewCell {
         
         if realmIdArray.contains(movie.id) {
             favoritesButton.tintColor = .red
+            print(realmMovieArray)
+            print(realmIdArray)
         } else {
             favoritesButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
