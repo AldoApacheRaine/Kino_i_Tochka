@@ -10,16 +10,27 @@ import UIKit
 class MoviesViewController: UIViewController {
     
     @IBOutlet weak var moviesTableView: UITableView!
+
+    @IBOutlet weak var sortButton: UIButton!
     
     var moviesData: [Doc] = []
-    var pages: Movies?
-    var page = 20
+    var pages: Int?
+    var page = 1
+    
+    var someURL = ""
+//    https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20&page=1&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B
+//    все фильмы с по убыванию голосов кп.
+    
+//    https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2022&field=typeNumber&search=1&sortField=year&sortType=-1&sortField=votes.kp&sortType=-1&limit=20&page=1&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B
+//    новые фильмы по убыванию кп и году выпуска
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
         setNavigationBar()
+//        setSortButton()
         setNetwork()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,10 +43,32 @@ class MoviesViewController: UIViewController {
         moviesTableView.delegate = self
     }
     
+//    private func setSortButton() {
+//        let allFilms = { [unowned self](action: UIAction) in someURL = "https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20&page=\(page)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
+//            moviesData = []
+//            page = 1
+//            setNetwork(sortURL: someURL, page: page)
+//            moviesTableView.reloadData()
+//        }
+//        let lastestFilms = { [unowned self](action: UIAction) in someURL = mainURL + latestFilmSort + String(page) + token
+//            moviesData = []
+//            page = 1
+//            setNetwork(sortURL: someURL, page: page)
+//            moviesTableView.reloadData()
+//        }
+//        sortButton.menu = UIMenu(children: [
+//            UIAction(title: "Option 1", state: .on, handler: allFilms),
+//            UIAction(title: "Option 2", handler: lastestFilms),
+//        ])
+//        sortButton.showsMenuAsPrimaryAction = true
+//        sortButton.changesSelectionAsPrimaryAction = true
+//    }
+    
     private func setNetwork() {
-        Network.network.fetchMovieList(url: "https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2020&field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&limit=20&page=2&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { (fechedMovieList: [Doc]) in
-            self.moviesData = fechedMovieList
-            self.moviesTableView.reloadData()
+        Network.network.fetchMovieList(url: "https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20&page=\(page)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { [unowned self] (fechedMovieList: Movies) in
+            moviesData.append(contentsOf: fechedMovieList.docs)
+            pages = fechedMovieList.pages
+            moviesTableView.reloadData()
         })
     }
     
@@ -70,12 +103,10 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastIndex = moviesData.count - 1
         if indexPath.row == lastIndex {
-            if page <= pages?.pages ?? 1 {
-                page += 1
-                Network.network.fetchMovieList(url: "https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2020&field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&limit=20&page=\(page)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { (fechedMovieList: [Doc]) in
-                    self.moviesData.append(contentsOf: fechedMovieList)
-                    self.moviesTableView.reloadData()
-                })
+            if page <= pages ?? 1 {
+            page += 1
+                setNetwork()
+                print(page)
             }
         }
     }

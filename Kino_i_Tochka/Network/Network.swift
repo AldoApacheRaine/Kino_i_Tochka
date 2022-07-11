@@ -12,10 +12,10 @@ final class Network {
     
     static let network = Network()
     
-    func fetchMovieList(url: String, completion: @escaping ([Doc]) -> Void) {
+    func fetchMovieList(url: String, completion: @escaping (Movies) -> Void) {
         AF.request(url).responseDecodable(of: Movies.self) { response in
             if let movieList = try? response.result.get(){
-                completion(movieList.docs)
+                completion(movieList)
             }
         }
     }

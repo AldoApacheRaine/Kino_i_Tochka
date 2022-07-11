@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DF2245A0E2C0E87A1C371237 /* Pods_Kino_i_Tochka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 137A273F4C166626E01603C0 /* Pods_Kino_i_Tochka.framework */; };
 		EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */; };
-		EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BE286F6F6B00C76AC8 /* Network.swift */; };
+		EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BCC0287CAB2B0054A7A4 /* Network.swift */; };
 		EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */; };
 		EC9818D22879BE2600803059 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9818D12879BE2600803059 /* FavoritesViewController.swift */; };
 		EC9818D42879BEB100803059 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9818D32879BEB100803059 /* FavoritesTableViewCell.swift */; };
@@ -23,7 +23,6 @@
 		ECC76E11286F493500C7F7AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E0F286F493500C7F7AB /* Main.storyboard */; };
 		ECC76E13286F493600C7F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E12286F493600C7F7AB /* Assets.xcassets */; };
 		ECC76E16286F493600C7F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */; };
-		ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E21286F51FE00C7F7AB /* Links.swift */; };
 		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
 		ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E32878CED100FEF240 /* RealmModel.swift */; };
 		ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E62878D08900FEF240 /* RealmManager.swift */; };
@@ -34,7 +33,7 @@
 		2DD35B520DD472F69A392628 /* Pods-Kino_i_Tochka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kino_i_Tochka.debug.xcconfig"; path = "Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka.debug.xcconfig"; sourceTree = "<group>"; };
 		BE90AE0581DAEDA8003401D6 /* Pods-Kino_i_Tochka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kino_i_Tochka.release.xcconfig"; path = "Target Support Files/Pods-Kino_i_Tochka/Pods-Kino_i_Tochka.release.xcconfig"; sourceTree = "<group>"; };
 		EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
-		EC67B0BE286F6F6B00C76AC8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		EC96BCC0287CAB2B0054A7A4 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC9818D12879BE2600803059 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		EC9818D32879BEB100803059 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
@@ -50,7 +49,6 @@
 		ECC76E12286F493600C7F7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECC76E15286F493600C7F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC76E17286F493600C7F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ECC76E21286F51FE00C7F7AB /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		ECDB61E32878CED100FEF240 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		ECDB61E62878D08900FEF240 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -98,7 +96,7 @@
 		EC67B0BD286F6F3500C76AC8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EC67B0BE286F6F6B00C76AC8 /* Network.swift */,
+				EC96BCC0287CAB2B0054A7A4 /* Network.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -158,7 +156,6 @@
 				ECC76E1F286F517D00C7F7AB /* ViewControllers */,
 				ECDB61E52878D05F00FEF240 /* Services */,
 				EC67B0BD286F6F3500C76AC8 /* Network */,
-				ECC76E21286F51FE00C7F7AB /* Links.swift */,
 				EC9697A0287357D7005FDF89 /* UIKit + Extensions */,
 				ECC76E1E286F516400C7F7AB /* Resources */,
 			);
@@ -331,6 +328,7 @@
 			files = (
 				ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */,
 				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
+				EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */,
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
 				EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */,
@@ -339,8 +337,6 @@
 				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,
 				ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
-				EC67B0BF286F6F6B00C76AC8 /* Network.swift in Sources */,
-				ECC76E22286F51FE00C7F7AB /* Links.swift in Sources */,
 				ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */,
 				EC9818D42879BEB100803059 /* FavoritesTableViewCell.swift in Sources */,
 				EC9818D22879BE2600803059 /* FavoritesViewController.swift in Sources */,

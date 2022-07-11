@@ -6,6 +6,7 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -162,9 +163,24 @@
                             <constraint firstItem="NP0-Rx-OrW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tET-bz-oPB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Кино и точка." id="N1Q-pG-9vu"/>
+                    <navigationItem key="navigationItem" title="Кино и точка." id="N1Q-pG-9vu">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" style="plain" changesSelectionAsPrimaryAction="YES" id="o0Y-zz-Nmh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" id="oGf-vN-ycO">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <menu key="menu" id="UE9-8Z-RrE">
+                                    <children>
+                                        <command title="Item 1" id="YeH-BL-aL8"/>
+                                        <command title="Item 2" id="waM-hk-HEj"/>
+                                    </children>
+                                </menu>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="moviesTableView" destination="NP0-Rx-OrW" id="dc7-m7-Y6j"/>
+                        <outlet property="sortButton" destination="oGf-vN-ycO" id="YMc-MK-noj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
