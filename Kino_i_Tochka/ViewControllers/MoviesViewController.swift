@@ -10,26 +10,23 @@ import UIKit
 class MoviesViewController: UIViewController {
     
     @IBOutlet weak var moviesTableView: UITableView!
-
     @IBOutlet weak var sortButton: UIButton!
     
     var moviesData: [Doc] = []
     var pages: Int?
-    var page = 1
+    var currentPage = 1
+    var isDefaultChoice = true
     
-    var someURL = ""
-//    https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20&page=1&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B
-//    все фильмы с по убыванию голосов кп.
-    
-//    https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2022&field=typeNumber&search=1&sortField=year&sortType=-1&sortField=votes.kp&sortType=-1&limit=20&page=1&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B
-//    новые фильмы по убыванию кп и году выпуска
-    
+    let bestFilmsUrl = "https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20"
+    let newFilmsUrl = "https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2022&field=typeNumber&search=1&sortField=year&sortType=-1&sortField=votes.kp&sortType=-1&limit=20"
+    let token = "XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
         setNavigationBar()
-//        setSortButton()
-        setNetwork()
+        setSortButton()
+        setNetwork(url: bestFilmsUrl)
         
     }
     
@@ -43,29 +40,54 @@ class MoviesViewController: UIViewController {
         moviesTableView.delegate = self
     }
     
-//    private func setSortButton() {
-//        let allFilms = { [unowned self](action: UIAction) in someURL = "https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20&page=\(page)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
-//            moviesData = []
-//            page = 1
-//            setNetwork(sortURL: someURL, page: page)
-//            moviesTableView.reloadData()
-//        }
-//        let lastestFilms = { [unowned self](action: UIAction) in someURL = mainURL + latestFilmSort + String(page) + token
-//            moviesData = []
-//            page = 1
-//            setNetwork(sortURL: someURL, page: page)
-//            moviesTableView.reloadData()
-//        }
-//        sortButton.menu = UIMenu(children: [
-//            UIAction(title: "Option 1", state: .on, handler: allFilms),
-//            UIAction(title: "Option 2", handler: lastestFilms),
-//        ])
-//        sortButton.showsMenuAsPrimaryAction = true
-//        sortButton.changesSelectionAsPrimaryAction = true
-//    }
+    private func setFilmsParameters() -> [String: String] {
+        let parameters = [
+            "page": "\(currentPage)",
+            "token": token
+        ]
+        return parameters
+    }
     
-    private func setNetwork() {
-        Network.network.fetchMovieList(url: "https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20&page=\(page)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { [unowned self] (fechedMovieList: Movies) in
+    private func setSortButton() {
+        let allFilms = { [unowned self](action: UIAction) in
+            moviesData = []
+            currentPage = 1
+            isDefaultChoice = true
+            setNetwork(url: bestFilmsUrl)
+            moviesTableView.reloadData()
+        }
+        let lastestFilms = { [unowned self](action: UIAction) in
+            moviesData = []
+            currentPage = 1
+            isDefaultChoice = false
+            setNetwork(url: newFilmsUrl)
+            moviesTableView.reloadData()
+        }
+        sortButton.menu = UIMenu(children: [
+            UIAction(title: "Выбор редакции", state: .on, handler: allFilms),
+            UIAction(title: "Лучшие новые фильмы", handler: lastestFilms),
+        ])
+        sortButton.showsMenuAsPrimaryAction = true
+        sortButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    private func setPagginBestFilms() {
+        if currentPage <= pages ?? 1 {
+            currentPage += 1
+            setNetwork(url: bestFilmsUrl)
+        }
+    }
+    
+    private func setPagginNewFilms() {
+        if currentPage <= pages ?? 1 {
+            currentPage += 1
+            setNetwork(url: newFilmsUrl)
+        }
+    }
+    
+    private func setNetwork(url: String) {
+        
+        Network.network.fetchMovieList(url: url, parameters: setFilmsParameters(), completion: { [unowned self] (fechedMovieList: Movies) in
             moviesData.append(contentsOf: fechedMovieList.docs)
             pages = fechedMovieList.pages
             moviesTableView.reloadData()
@@ -76,8 +98,6 @@ class MoviesViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-
     }
 }
 
@@ -103,11 +123,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastIndex = moviesData.count - 1
         if indexPath.row == lastIndex {
-            if page <= pages ?? 1 {
-            page += 1
-                setNetwork()
-                print(page)
-            }
+            isDefaultChoice ? setPagginBestFilms() : setPagginNewFilms()
         }
     }
     

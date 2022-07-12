@@ -12,8 +12,8 @@ final class Network {
     
     static let network = Network()
     
-    func fetchMovieList(url: String, completion: @escaping (Movies) -> Void) {
-        AF.request(url).responseDecodable(of: Movies.self) { response in
+    func fetchMovieList(url: String, parameters: [String: String], completion: @escaping (Movies) -> Void) {
+        AF.request(url, parameters: parameters).responseDecodable(of: Movies.self) { response in
             if let movieList = try? response.result.get(){
                 completion(movieList)
             }
