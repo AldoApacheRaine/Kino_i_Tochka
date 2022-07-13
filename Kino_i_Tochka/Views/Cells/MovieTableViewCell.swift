@@ -16,6 +16,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieLenghtLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
+    @IBOutlet weak var movieRetingStarStack: UIStackView!
     
     private let localRealm = try! Realm()
     private var realmMovieArray: Results<RealmMovie>!
@@ -24,6 +25,13 @@ class MovieTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         realmMovieArray = localRealm.objects(RealmMovie.self)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        for case let view as UIImageView in movieRetingStarStack.subviews {
+            view.image = (UIImage(systemName: "star"))
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,11 +67,17 @@ class MovieTableViewCell: UITableViewCell {
             favoritesButton.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
         
-        let (hour, min) = { (mins: Int) -> (Int, Int) in
-            return (mins / 60, mins % 60)}(movie.movieLength ?? 0)
+        let (hour, min) = (movie.movieLength ?? 0).convertMinutes()
         
         movieLenghtLabel.text = "\(hour) ч \(min) мин"
         
         moviePosterImageView.setImageFromUrl(imageUrl: movie.poster.url)
+        
+        let checkedStars = Int((movie.rating.kp - 1) / 2)
+        for i in 0...checkedStars {
+            if let image = movieRetingStarStack.subviews[i] as? UIImageView {
+                image.image = UIImage(systemName: "star.fill")
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var detailRatingStarStack: UIStackView!
     
     var movieData: DetailMovie?
     var movie = [Doc]()
@@ -67,9 +68,14 @@ class DetailViewController: UIViewController {
         detailDescriptionLabel.text = movie.first?.description
         detailRatingLabel.text = String(movie.first?.rating.kp ?? 0)
         detailBackImageView.setImageFromUrl(imageUrl: (movie.first?.poster.url)!)
-        let (hour, min) = { (mins: Int) -> (Int, Int) in
-            return (mins / 60, mins % 60)}(movie.first?.movieLength ?? 0)
+        let (hour, min) = (movie.first?.movieLength ?? 0).convertMinutes()
         detailLenghtLabel.text = "\(hour) ч \(min) мин"
+        let checkedStars = Int (((movie.first?.rating.kp ?? 0) - 1) / 2)
+        for i in 0...checkedStars {
+            if let image = detailRatingStarStack.subviews[i] as? UIImageView {
+                image.image = UIImage(systemName: "star.fill")
+            }
+        }
     }
     
     private func setGradientOnImage() {
