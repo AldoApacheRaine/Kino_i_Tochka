@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import RealmSwift
 
 class DetailViewController: UIViewController {
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var detailRatingStarStack: UIStackView!
+    @IBOutlet weak var detailVideoWV: WKWebView!
     
     var movieData: DetailMovie?
     var movie = [Doc]()
@@ -55,10 +57,11 @@ class DetailViewController: UIViewController {
     }
     
     private func getDetails() {
-        Network.network.fetchDetailMovie(url: "https://api.kinopoisk.dev/movie?field=id&search=\(movie.first!.id)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { (fechedDetailMovie: DetailMovie) in
-            self.movieData = fechedDetailMovie
-            self.genresCollectionView.reloadData()
-            self.personsCollectionView.reloadData()
+        Network.network.fetchDetailMovie(url: "https://api.kinopoisk.dev/movie?field=id&search=\(movie.first!.id)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
+            movieData = fechedDetailMovie
+            genresCollectionView.reloadData()
+            personsCollectionView.reloadData()
+            playVideo(videoUrl: (movieData?.videos.trailers.first!.url)!)
         })
     }
     
@@ -78,6 +81,12 @@ class DetailViewController: UIViewController {
         }
     }
     
+    private func playVideo(videoUrl: String) {
+        guard let videoURL = URL(string: videoUrl) else { return }
+        detailVideoWV.configuration.mediaTypesRequiringUserActionForPlayback = .all
+        detailVideoWV.load(URLRequest(url: videoURL))
+    }
+
     private func setGradientOnImage() {
         let gradient: CAGradientLayer = {
             let gradient = CAGradientLayer()
