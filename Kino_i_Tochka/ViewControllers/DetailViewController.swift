@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
     private let localRealm = try! Realm()
     private var realmMovie = RealmMovie()
     private var realmMovieArray: Results<RealmMovie>!
+    private var buttonSwitched : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,19 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
-        setAndSaveRealmModel()
-        likeButton.tintColor = .red
+        buttonSwitched = !buttonSwitched
+        
+        if buttonSwitched {
+            setAndSaveRealmModel()
+            likeButton.tintColor = .red
+        } else {
+            for i in realmMovieArray {
+                if i.realmId == movie.first?.id {
+                    RealmManager.shared.deleteRealmModel(model: i)
+                }
+            }
+            likeButton.tintColor = .white
+        }
     }
     
     private func setGenresCollection() {
@@ -56,8 +68,16 @@ class DetailViewController: UIViewController {
         personsCollectionView.dataSource = self
     }
     
+    private func setFilmParameters() -> [String: String] {
+        let parameters = [
+            "search": String(movie.first!.id),
+            "token": Constants.token
+        ]
+        return parameters
+    }
+    
     private func getDetails() {
-        Network.network.fetchDetailMovie(url: "https://api.kinopoisk.dev/movie?field=id&search=\(movie.first!.id)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
+        Network.network.fetchDetailMovie(url: Constants.detailUrl, parameters: setFilmParameters(), completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
             movieData = fechedDetailMovie
             genresCollectionView.reloadData()
             personsCollectionView.reloadData()
@@ -121,6 +141,7 @@ class DetailViewController: UIViewController {
         for i in realmMovieArray {
             if i.realmId == movie.first?.id {
                 likeButton.tintColor = .red
+                buttonSwitched = true
             }
         }
     }
@@ -131,7 +152,6 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if collectionView == personsCollectionView {
             return movieData?.persons.count ?? 0
         }

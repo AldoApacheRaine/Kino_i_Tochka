@@ -18,6 +18,7 @@
 		ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA186302870A48A00399989 /* DetailMovieModel.swift */; };
 		ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA217172871C2B900534A65 /* UIImageView + Extension.swift */; };
 		ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */; };
+		ECC72C212881F83700FC8F35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC72C202881F83700FC8F35 /* Constants.swift */; };
 		ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E09286F493500C7F7AB /* AppDelegate.swift */; };
 		ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */; };
 		ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */; };
@@ -43,6 +44,7 @@
 		ECA186302870A48A00399989 /* DetailMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieModel.swift; sourceTree = "<group>"; };
 		ECA217172871C2B900534A65 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECC72C202881F83700FC8F35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino_i_Tochka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC76E09286F493500C7F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				EC96BCC0287CAB2B0054A7A4 /* Network.swift */,
+				ECC72C202881F83700FC8F35 /* Constants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */,
+				ECC72C212881F83700FC8F35 /* Constants.swift in Sources */,
 				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
 				EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */,
 				EC9AD29A287F29220035948D /* Int + Extension.swift in Sources */,
