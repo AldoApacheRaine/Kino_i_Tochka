@@ -20,12 +20,16 @@ final class Network {
         }
     }
     
-    func fetchDetailMovie(url: String, completion: @escaping (DetailMovie) -> Void) {
-        AF.request(url).responseDecodable(of: DetailMovie.self) { response in
+    func fetchDetailMovie(url: String, parameters: [String: String], completion: @escaping (DetailMovie) -> Void) {
+        AF.request(url, parameters: parameters).responseDecodable(of: DetailMovie.self) { response in
             if let detailList = try? response.result.get(){
                 completion(detailList)
             }
         }
+    }
+    
+    func isConnectedToInternet() -> Bool {
+        return NetworkReachabilityManager()?.isReachable ?? false
     }
 }
     

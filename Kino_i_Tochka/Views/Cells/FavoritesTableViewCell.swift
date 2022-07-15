@@ -15,9 +15,18 @@ class FavoritesTableViewCell: UITableViewCell {
     @IBOutlet weak var favoritesYearLabel: UILabel!
     @IBOutlet weak var favoritesNameLabel: UILabel!
     @IBOutlet weak var favoritesImageView: UIImageView!
+    @IBOutlet weak var favoritesStarRatingStack: UIStackView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        for case let view as UIImageView in favoritesStarRatingStack.subviews {
+            view.image = (UIImage(systemName: "star"))
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,12 +37,18 @@ class FavoritesTableViewCell: UITableViewCell {
         favoritesNameLabel.text = model.realmName
         favoritesYearLabel.text = String(model.realmYear)
         
-        let (hour, min) = { (mins: Int) -> (Int, Int) in
-            return (mins / 60, mins % 60)}(model.realmMovieLenght)
+        let (hour, min) = model.realmMovieLenght.convertMinutes()
         
         favoritesLenghtLabel.text = "\(hour) ч \(min) мин"
         favoritesRatingLabel.text = String(model.realmRatingKp)
         favoritesImageView.setImageFromUrl(imageUrl: model.realmPosterUrl)
+        
+        let checkedStars = Int((model.realmRatingKp - 1) / 2)
+        for i in 0...checkedStars {
+            if let image = favoritesStarRatingStack.subviews[i] as? UIImageView {
+                image.image = UIImage(systemName: "star.fill")
+            }
+        }
     }
 
 }

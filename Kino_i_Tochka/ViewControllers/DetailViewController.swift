@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import RealmSwift
 
 class DetailViewController: UIViewController {
@@ -19,12 +20,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var detailRatingStarStack: UIStackView!
+    @IBOutlet weak var detailVideoWV: WKWebView!
     
     var movieData: DetailMovie?
     var movie = [Doc]()
     private let localRealm = try! Realm()
     private var realmMovie = RealmMovie()
     private var realmMovieArray: Results<RealmMovie>!
+    private var buttonSwitched : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +43,19 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
-        setAndSaveRealmModel()
-        likeButton.tintColor = .red
+        buttonSwitched = !buttonSwitched
+        
+        if buttonSwitched {
+            setAndSaveRealmModel()
+            likeButton.tintColor = .red
+        } else {
+            for i in realmMovieArray {
+                if i.realmId == movie.first?.id {
+                    RealmManager.shared.deleteRealmModel(model: i)
+                }
+            }
+            likeButton.tintColor = .white
+        }
     }
     
     private func setGenresCollection() {
@@ -53,11 +68,20 @@ class DetailViewController: UIViewController {
         personsCollectionView.dataSource = self
     }
     
+    private func setFilmParameters() -> [String: String] {
+        let parameters = [
+            "search": String(movie.first!.id),
+            "token": Constants.token
+        ]
+        return parameters
+    }
+    
     private func getDetails() {
-        Network.network.fetchDetailMovie(url: "https://api.kinopoisk.dev/movie?field=id&search=\(movie.first!.id)&token=XSVFQ1H-BFZM73K-GNVXEQS-XDP320B", completion: { (fechedDetailMovie: DetailMovie) in
-            self.movieData = fechedDetailMovie
-            self.genresCollectionView.reloadData()
-            self.personsCollectionView.reloadData()
+        Network.network.fetchDetailMovie(url: Constants.detailUrl, parameters: setFilmParameters(), completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
+            movieData = fechedDetailMovie
+            genresCollectionView.reloadData()
+            personsCollectionView.reloadData()
+            playVideo(videoUrl: (movieData?.videos.trailers.first!.url)!)
         })
     }
     
@@ -67,11 +91,22 @@ class DetailViewController: UIViewController {
         detailDescriptionLabel.text = movie.first?.description
         detailRatingLabel.text = String(movie.first?.rating.kp ?? 0)
         detailBackImageView.setImageFromUrl(imageUrl: (movie.first?.poster.url)!)
-        let (hour, min) = { (mins: Int) -> (Int, Int) in
-            return (mins / 60, mins % 60)}(movie.first?.movieLength ?? 0)
+        let (hour, min) = (movie.first?.movieLength ?? 0).convertMinutes()
         detailLenghtLabel.text = "\(hour) ч \(min) мин"
+        let checkedStars = Int (((movie.first?.rating.kp ?? 0) - 1) / 2)
+        for i in 0...checkedStars {
+            if let image = detailRatingStarStack.subviews[i] as? UIImageView {
+                image.image = UIImage(systemName: "star.fill")
+            }
+        }
     }
     
+    private func playVideo(videoUrl: String) {
+        guard let videoURL = URL(string: videoUrl) else { return }
+        detailVideoWV.configuration.mediaTypesRequiringUserActionForPlayback = .all
+        detailVideoWV.load(URLRequest(url: videoURL))
+    }
+
     private func setGradientOnImage() {
         let gradient: CAGradientLayer = {
             let gradient = CAGradientLayer()
@@ -106,6 +141,7 @@ class DetailViewController: UIViewController {
         for i in realmMovieArray {
             if i.realmId == movie.first?.id {
                 likeButton.tintColor = .red
+                buttonSwitched = true
             }
         }
     }
@@ -116,7 +152,6 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if collectionView == personsCollectionView {
             return movieData?.persons.count ?? 0
         }

@@ -11,28 +11,37 @@ class MoviesViewController: UIViewController {
     
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var sortButton: UIButton!
+    @IBOutlet weak var noInternetImageView: UIImageView!
     
     var moviesData: [Doc] = []
     var pages: Int?
     var currentPage = 1
     var isDefaultChoice = true
-    
-    let bestFilmsUrl = "https://api.kinopoisk.dev/movie?field=typeNumber&search=1&sortField=votes.kp&sortType=-1&limit=20"
-    let newFilmsUrl = "https://api.kinopoisk.dev/movie?field=rating.kp&search=5-10&field=year&search=2015-2022&field=typeNumber&search=1&sortField=year&sortType=-1&sortField=votes.kp&sortType=-1&limit=20"
-    let token = "XSVFQ1H-BFZM73K-GNVXEQS-XDP320B"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        isInternet()
         setTableView()
         setNavigationBar()
         setSortButton()
-        setNetwork(url: bestFilmsUrl)
+        setNetwork(url: Constants.bestFilmsUrl)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isInternet()
         self.moviesTableView.reloadData()
+    }
+    
+    private func isInternet() {
+        if Network.network.isConnectedToInternet() {
+            moviesTableView.isHidden = false
+            noInternetImageView.isHidden = true
+        } else {
+            moviesTableView.isHidden = true
+            noInternetImageView.isHidden = false
+        }
     }
     
     private func setTableView() {
@@ -43,7 +52,7 @@ class MoviesViewController: UIViewController {
     private func setFilmsParameters() -> [String: String] {
         let parameters = [
             "page": "\(currentPage)",
-            "token": token
+            "token": Constants.token
         ]
         return parameters
     }
@@ -53,14 +62,16 @@ class MoviesViewController: UIViewController {
             moviesData = []
             currentPage = 1
             isDefaultChoice = true
-            setNetwork(url: bestFilmsUrl)
+            isInternet()
+            setNetwork(url: Constants.bestFilmsUrl)
             moviesTableView.reloadData()
         }
         let lastestFilms = { [unowned self](action: UIAction) in
             moviesData = []
             currentPage = 1
             isDefaultChoice = false
-            setNetwork(url: newFilmsUrl)
+            isInternet()
+            setNetwork(url: Constants.newFilmsUrl)
             moviesTableView.reloadData()
         }
         sortButton.menu = UIMenu(children: [
@@ -74,14 +85,14 @@ class MoviesViewController: UIViewController {
     private func setPagginBestFilms() {
         if currentPage <= pages ?? 1 {
             currentPage += 1
-            setNetwork(url: bestFilmsUrl)
+            setNetwork(url: Constants.bestFilmsUrl)
         }
     }
     
     private func setPagginNewFilms() {
         if currentPage <= pages ?? 1 {
             currentPage += 1
-            setNetwork(url: newFilmsUrl)
+            setNetwork(url: Constants.newFilmsUrl)
         }
     }
     
