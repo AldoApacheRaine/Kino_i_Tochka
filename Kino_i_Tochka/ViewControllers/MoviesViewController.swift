@@ -24,7 +24,6 @@ class MoviesViewController: UIViewController {
         setNavigationBar()
         setSortButton()
         setNetwork(url: Constants.bestFilmsUrl)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
