@@ -20,7 +20,6 @@ class MoviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        isInternet()
         setTableView()
         setNavigationBar()
         setSortButton()
