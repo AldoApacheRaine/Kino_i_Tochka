@@ -17,7 +17,7 @@ class FavoritesViewController: UIViewController {
     let movieCell = MovieTableViewCell()
     
     private let localRealm = try! Realm()
-    private var realmMovieArray: Results<RealmMovie>!
+    var realmMovieArray: Results<RealmMovie>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class FavoritesViewController: UIViewController {
         favoritesTableView.delegate = self
     }
     
-    private func checkFavorites() {
+    func checkFavorites() {
         if realmMovieArray.isEmpty {
             favoritesTableView.isHidden = true
             noFilmImageView.isHidden = false
@@ -47,27 +47,4 @@ class FavoritesViewController: UIViewController {
         }
     }
     
-}
-
-// MARK: - UITableViewDataSource, UITableViewDelegate
-
-extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        realmMovieArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell") as? FavoritesTableViewCell {
-            let model = realmMovieArray[indexPath.row]
-            cell.cellConfigure(model: model)
-            return cell
-        }
-        return UITableViewCell()
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let deleteModel = realmMovieArray[indexPath.row]
-        RealmManager.shared.deleteRealmModel(model: deleteModel)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        checkFavorites()
-    }
 }

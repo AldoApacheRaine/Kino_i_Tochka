@@ -22,11 +22,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var detailRatingStarStack: UIStackView!
     @IBOutlet weak var detailVideoWV: WKWebView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var movieData: DetailMovie?
     var movie = [Doc]()
     private let localRealm = try! Realm()
-    private var realmMovie = RealmMovie()
     private var realmMovieArray: Results<RealmMovie>!
     private var buttonSwitched : Bool = false
     
@@ -36,10 +36,10 @@ class DetailViewController: UIViewController {
         setDetails()
         setGenresCollection()
         setPersonCollection()
-        setGradientOnImage()
         
         realmMovieArray = localRealm.objects(RealmMovie.self)
         isFavorite()
+        scrollView.delegate = self
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
@@ -106,26 +106,9 @@ class DetailViewController: UIViewController {
         detailVideoWV.configuration.mediaTypesRequiringUserActionForPlayback = .all
         detailVideoWV.load(URLRequest(url: videoURL))
     }
-
-    private func setGradientOnImage() {
-        let gradient: CAGradientLayer = {
-            let gradient = CAGradientLayer()
-            let viewColor: UIColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 1)
-            gradient.type = .axial
-            gradient.colors = [
-                UIColor.clear.cgColor,
-                viewColor.withAlphaComponent(1).cgColor,
-                viewColor.cgColor
-            ]
-            gradient.locations = [0.65, 0.9, 1]
-            return gradient
-        }()
-        
-        gradient.frame = detailBackImageView.bounds
-        detailBackImageView.layer.addSublayer(gradient)
-    }
     
     private func setAndSaveRealmModel() {
+        let realmMovie = RealmMovie()
         realmMovie.realmName = movie.first?.name ?? "Unknown"
         realmMovie.realmDescription = movie.first?.description ?? "Unknown"
         realmMovie.realmId = movie.first?.id ?? 00
@@ -146,32 +129,3 @@ class DetailViewController: UIViewController {
         }
     }
 }
-
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
-
-extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == personsCollectionView {
-            return movieData?.persons.count ?? 0
-        }
-        return movieData?.genres.count ?? 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == personsCollectionView {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "personCell", for: indexPath) as? PersonCollectionViewCell {
-                cell.cellConfugure(detail: (movieData?.persons[indexPath.row])!)
-                return cell
-            }
-            return UICollectionViewCell()
-        }
-        
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genresCell", for: indexPath) as? GenresCollectionViewCell {
-            cell.genreLabel.text = movieData?.genres[indexPath.item].name
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-}
-
