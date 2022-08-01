@@ -197,7 +197,7 @@
                                             <outlet property="movieRatingLabel" destination="XcS-Zp-f83" id="yMP-wz-W9U"/>
                                             <outlet property="movieRetingStarStack" destination="3OW-3P-3tb" id="gmL-yX-CrL"/>
                                             <outlet property="movieYearLabel" destination="rXD-4r-sp9" id="Bys-93-ywT"/>
-                                            <segue destination="qW2-4b-T6k" kind="show" id="2NZ-oh-af2"/>
+                                            <segue destination="qW2-4b-T6k" kind="show" id="ZgK-EL-WCM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -262,6 +262,23 @@
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noFilm" translatesAutoresizingMaskIntoConstraints="NO" id="CZw-vB-HnI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ9-bf-OUr">
+                                <rect key="frame" x="115" y="420.5" width="184" height="55"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Войти в ВК" titleAlignment="center">
+                                    <fontDescription key="titleFontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
+                                    <color key="baseForegroundColor" systemColor="tintColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="singInVK" destination="qJk-KR-HvD" eventType="touchUpInside" id="D3X-AH-tCu"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XUm-2Q-aQ0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
@@ -434,10 +451,12 @@
                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="wtx-hw-6GO" firstAttribute="trailing" secondItem="XUm-2Q-aQ0" secondAttribute="trailing" id="2dj-8B-gtg"/>
+                            <constraint firstItem="TJ9-bf-OUr" firstAttribute="centerY" secondItem="ypK-nt-6Y7" secondAttribute="centerY" id="8M4-s7-2t9"/>
                             <constraint firstItem="XUm-2Q-aQ0" firstAttribute="top" secondItem="ypK-nt-6Y7" secondAttribute="top" id="Ag2-mx-Iz3"/>
                             <constraint firstItem="wtx-hw-6GO" firstAttribute="bottom" secondItem="CZw-vB-HnI" secondAttribute="bottom" id="Kmg-1N-htg"/>
                             <constraint firstItem="CZw-vB-HnI" firstAttribute="leading" secondItem="wtx-hw-6GO" secondAttribute="leading" id="RDY-JA-jS8"/>
                             <constraint firstItem="wtx-hw-6GO" firstAttribute="trailing" secondItem="CZw-vB-HnI" secondAttribute="trailing" id="RqW-b6-4yl"/>
+                            <constraint firstItem="TJ9-bf-OUr" firstAttribute="centerX" secondItem="ypK-nt-6Y7" secondAttribute="centerX" id="aeb-Nm-Hzy"/>
                             <constraint firstItem="wtx-hw-6GO" firstAttribute="bottom" secondItem="XUm-2Q-aQ0" secondAttribute="bottom" id="dHs-JB-iMt"/>
                             <constraint firstItem="XUm-2Q-aQ0" firstAttribute="leading" secondItem="ypK-nt-6Y7" secondAttribute="leading" id="ghC-4e-QCc"/>
                             <constraint firstItem="CZw-vB-HnI" firstAttribute="top" secondItem="ypK-nt-6Y7" secondAttribute="top" id="iNo-sW-XBv"/>
@@ -853,7 +872,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcn-Vl-XMt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4680" y="80"/>
+            <point key="canvasLocation" x="4679.7101449275369" y="79.6875"/>
         </scene>
         <!--Главная-->
         <scene sceneID="0Wr-Ne-Z2D">
@@ -916,6 +935,9 @@
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

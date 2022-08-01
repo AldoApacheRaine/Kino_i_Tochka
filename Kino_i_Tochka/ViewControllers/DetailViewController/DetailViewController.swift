@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import RealmSwift
+import VK_ios_sdk
 
 class DetailViewController: UIViewController {
     
@@ -43,6 +44,9 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
+        let codeVC = CodeDetailViewController()
+        codeVC.modalPresentationStyle = .fullScreen
+        present(codeVC, animated: true)
         buttonSwitched = !buttonSwitched
         
         if buttonSwitched {

@@ -39,5 +39,10 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let destinationViewController = CodeDetailViewController()
+//        destinationViewController.movie = moviesData[indexPath.row]
+//        navigationController?.pushViewController(destinationViewController, animated: true)
+//    }
 }
 

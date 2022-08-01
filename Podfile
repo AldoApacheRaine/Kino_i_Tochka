@@ -9,5 +9,6 @@ target 'Kino_i_Tochka' do
 pod 'Alamofire'
 pod 'Kingfisher'
 pod 'RealmSwift', '~>10'
+pod "VK-ios-sdk"
 
 end
