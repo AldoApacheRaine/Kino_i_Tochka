@@ -44,11 +44,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
-        let codeVC = CodeDetailViewController()
-        codeVC.modalPresentationStyle = .fullScreen
-        present(codeVC, animated: true)
         buttonSwitched = !buttonSwitched
-        
         if buttonSwitched {
             setAndSaveRealmModel()
             likeButton.tintColor = .red

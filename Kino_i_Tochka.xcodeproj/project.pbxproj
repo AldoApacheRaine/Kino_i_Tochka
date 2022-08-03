@@ -13,6 +13,8 @@
 		EC3A7F4C288C0ED10089427A /* FavoritesViewController + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A7F4B288C0ED10089427A /* FavoritesViewController + UITableView.swift */; };
 		EC3A7F4E288C0F140089427A /* UIView + Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A7F4D288C0F140089427A /* UIView + Gradient.swift */; };
 		EC3A7F50288C0F510089427A /* DetailViewController + UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A7F4F288C0F510089427A /* DetailViewController + UIScrollView.swift */; };
+		EC65BAFC289AE247009BDEE2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC65BAFB289AE247009BDEE2 /* ProfileViewController.swift */; };
+		EC65BAFE289AE7F7009BDEE2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC65BAFD289AE7F7009BDEE2 /* ProfileModel.swift */; };
 		EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */; };
 		EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BCC0287CAB2B0054A7A4 /* Network.swift */; };
 		EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */; };
@@ -47,6 +49,8 @@
 		EC3A7F4B288C0ED10089427A /* FavoritesViewController + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesViewController + UITableView.swift"; sourceTree = "<group>"; };
 		EC3A7F4D288C0F140089427A /* UIView + Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Gradient.swift"; sourceTree = "<group>"; };
 		EC3A7F4F288C0F510089427A /* DetailViewController + UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController + UIScrollView.swift"; sourceTree = "<group>"; };
+		EC65BAFB289AE247009BDEE2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EC65BAFD289AE7F7009BDEE2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EC96BCC0287CAB2B0054A7A4 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -159,12 +163,21 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		EC65BAFA289AE219009BDEE2 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EC65BAFB289AE247009BDEE2 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
 		EC67B0BC286F6F2800C76AC8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */,
 				ECA186302870A48A00399989 /* DetailMovieModel.swift */,
 				ECDB61E32878CED100FEF240 /* RealmModel.swift */,
+				EC65BAFD289AE7F7009BDEE2 /* ProfileModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				EC992208289163330075AB3E /* CodeDetailViewController */,
+				EC65BAFA289AE219009BDEE2 /* ProfileViewController */,
 				EC3A7F41288C0DD40089427A /* MoviesViewController */,
 				EC3A7F42288C0DE40089427A /* DetailViewController */,
 				EC3A7F43288C0DF10089427A /* FavoritesViewcontroller */,
@@ -405,7 +419,9 @@
 				EC3A7F4A288C0E940089427A /* DetailViewController + UICollectionView.swift in Sources */,
 				EC9AD29A287F29220035948D /* Int + Extension.swift in Sources */,
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
+				EC65BAFE289AE7F7009BDEE2 /* ProfileModel.swift in Sources */,
 				EC3A7F4E288C0F140089427A /* UIView + Gradient.swift in Sources */,
+				EC65BAFC289AE247009BDEE2 /* ProfileViewController.swift in Sources */,
 				EC3A7F4C288C0ED10089427A /* FavoritesViewController + UITableView.swift in Sources */,
 				EC99220A289163580075AB3E /* CodeDetailViewController.swift in Sources */,
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
