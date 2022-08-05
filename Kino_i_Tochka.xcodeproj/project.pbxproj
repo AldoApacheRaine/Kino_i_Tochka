@@ -20,13 +20,16 @@
 		EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */; };
 		EC9818D22879BE2600803059 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9818D12879BE2600803059 /* FavoritesViewController.swift */; };
 		EC9818D42879BEB100803059 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9818D32879BEB100803059 /* FavoritesTableViewCell.swift */; };
-		EC99220A289163580075AB3E /* CodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC992209289163580075AB3E /* CodeDetailViewController.swift */; };
 		EC99220C289173A60075AB3E /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99220B289173A60075AB3E /* UIStackView + Extension.swift */; };
 		EC9AD29A287F29220035948D /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9AD299287F29220035948D /* Int + Extension.swift */; };
 		ECA1862F28709F4600399989 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA1862E28709F4600399989 /* DetailViewController.swift */; };
 		ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA186302870A48A00399989 /* DetailMovieModel.swift */; };
 		ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA217172871C2B900534A65 /* UIImageView + Extension.swift */; };
 		ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */; };
+		ECBB0EE5289D864100AF4E96 /* DetailFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EE4289D864100AF4E96 /* DetailFavoritesViewController.swift */; };
+		ECBB0EE7289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EE6289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift */; };
+		ECBB0EE9289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EE8289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift */; };
+		ECBB0EEB289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EEA289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift */; };
 		ECC72C212881F83700FC8F35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC72C202881F83700FC8F35 /* Constants.swift */; };
 		ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E09286F493500C7F7AB /* AppDelegate.swift */; };
 		ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */; };
@@ -37,7 +40,6 @@
 		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
 		ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E32878CED100FEF240 /* RealmModel.swift */; };
 		ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E62878D08900FEF240 /* RealmManager.swift */; };
-		ECE549222891C79700334DFC /* CodeGenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE549212891C79700334DFC /* CodeGenresCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,13 +58,16 @@
 		EC97E69B2874AF70007F43DC /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC9818D12879BE2600803059 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		EC9818D32879BEB100803059 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
-		EC992209289163580075AB3E /* CodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDetailViewController.swift; sourceTree = "<group>"; };
 		EC99220B289173A60075AB3E /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		EC9AD299287F29220035948D /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
 		ECA1862E28709F4600399989 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ECA186302870A48A00399989 /* DetailMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieModel.swift; sourceTree = "<group>"; };
 		ECA217172871C2B900534A65 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECBB0EE4289D864100AF4E96 /* DetailFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesViewController.swift; sourceTree = "<group>"; };
+		ECBB0EE6289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailFavoritesViewController + UICollectionView.swift"; sourceTree = "<group>"; };
+		ECBB0EE8289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECBB0EEA289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailFavoritesViewController + UIScrollView.swift"; sourceTree = "<group>"; };
 		ECC72C202881F83700FC8F35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino_i_Tochka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC76E09286F493500C7F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +80,6 @@
 		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		ECDB61E32878CED100FEF240 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		ECDB61E62878D08900FEF240 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		ECE549212891C79700334DFC /* CodeGenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGenresCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,14 +132,14 @@
 			path = DetailViewController;
 			sourceTree = "<group>";
 		};
-		EC3A7F43288C0DF10089427A /* FavoritesViewcontroller */ = {
+		EC3A7F43288C0DF10089427A /* FavoritesViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EC3A7F46288C0E0A0089427A /* Cells */,
 				EC9818D12879BE2600803059 /* FavoritesViewController.swift */,
 				EC3A7F4B288C0ED10089427A /* FavoritesViewController + UITableView.swift */,
 			);
-			path = FavoritesViewcontroller;
+			path = FavoritesViewController;
 			sourceTree = "<group>";
 		};
 		EC3A7F44288C0E000089427A /* Cells */ = {
@@ -202,13 +206,23 @@
 			path = "UIKit + Extensions";
 			sourceTree = "<group>";
 		};
-		EC992208289163330075AB3E /* CodeDetailViewController */ = {
+		ECBB0EE2289D860100AF4E96 /* DetailFavoritesViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ECE549202891C76C00334DFC /* Cells */,
-				EC992209289163580075AB3E /* CodeDetailViewController.swift */,
+				ECBB0EE3289D862400AF4E96 /* Cells */,
+				ECBB0EE4289D864100AF4E96 /* DetailFavoritesViewController.swift */,
+				ECBB0EE6289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift */,
+				ECBB0EEA289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift */,
 			);
-			path = CodeDetailViewController;
+			path = DetailFavoritesViewController;
+			sourceTree = "<group>";
+		};
+		ECBB0EE3289D862400AF4E96 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				ECBB0EE8289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		ECC76DFD286F493500C7F7AB = {
@@ -266,11 +280,11 @@
 		ECC76E1F286F517D00C7F7AB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				EC992208289163330075AB3E /* CodeDetailViewController */,
-				EC65BAFA289AE219009BDEE2 /* ProfileViewController */,
 				EC3A7F41288C0DD40089427A /* MoviesViewController */,
 				EC3A7F42288C0DE40089427A /* DetailViewController */,
-				EC3A7F43288C0DF10089427A /* FavoritesViewcontroller */,
+				EC65BAFA289AE219009BDEE2 /* ProfileViewController */,
+				EC3A7F43288C0DF10089427A /* FavoritesViewController */,
+				ECBB0EE2289D860100AF4E96 /* DetailFavoritesViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -281,14 +295,6 @@
 				ECDB61E62878D08900FEF240 /* RealmManager.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		ECE549202891C76C00334DFC /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				ECE549212891C79700334DFC /* CodeGenresCollectionViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +419,7 @@
 				ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */,
 				ECC72C212881F83700FC8F35 /* Constants.swift in Sources */,
 				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
+				ECBB0EE5289D864100AF4E96 /* DetailFavoritesViewController.swift in Sources */,
 				EC3A7F50288C0F510089427A /* DetailViewController + UIScrollView.swift in Sources */,
 				EC3A7F48288C0E4E0089427A /* MoviesViewController + UITableView.swift in Sources */,
 				EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */,
@@ -422,18 +429,19 @@
 				EC65BAFE289AE7F7009BDEE2 /* ProfileModel.swift in Sources */,
 				EC3A7F4E288C0F140089427A /* UIView + Gradient.swift in Sources */,
 				EC65BAFC289AE247009BDEE2 /* ProfileViewController.swift in Sources */,
+				ECBB0EE7289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift in Sources */,
 				EC3A7F4C288C0ED10089427A /* FavoritesViewController + UITableView.swift in Sources */,
-				EC99220A289163580075AB3E /* CodeDetailViewController.swift in Sources */,
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
 				EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */,
+				ECBB0EEB289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift in Sources */,
 				ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */,
 				EC99220C289173A60075AB3E /* UIStackView + Extension.swift in Sources */,
 				ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */,
 				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,
-				ECE549222891C79700334DFC /* CodeGenresCollectionViewCell.swift in Sources */,
 				ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
 				ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */,
+				ECBB0EE9289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift in Sources */,
 				EC9818D42879BEB100803059 /* FavoritesTableViewCell.swift in Sources */,
 				EC9818D22879BE2600803059 /* FavoritesViewController.swift in Sources */,
 				ECA1862F28709F4600399989 /* DetailViewController.swift in Sources */,

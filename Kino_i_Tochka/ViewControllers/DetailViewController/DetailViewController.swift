@@ -117,6 +117,10 @@ class DetailViewController: UIViewController {
         realmMovie.realmYear = movie.first?.year ?? 00
         realmMovie.realmRatingKp = movie.first?.rating.kp ?? 00
         
+        for i in 0...(movieData?.genres.count ?? 1) - 1 {
+            realmMovie.genres.append(movieData?.genres[i].name ?? "no genre")
+        }
+        
         RealmManager.shared.saveRealmModel(model: realmMovie)
     }
 
