@@ -19,6 +19,7 @@ class DetailFavoritesViewController: UIViewController {
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var detailRatingStarStack: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var shareButton: UIButton!
     
     private let localRealm = try! Realm()
     var realmMovie: RealmMovie?
@@ -27,17 +28,32 @@ class DetailFavoritesViewController: UIViewController {
         super.viewDidLoad()
         setDetails()
         setGenresCollection()
-        
         scrollView.delegate = self
+        setShareButton()
     }
-    
 
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        let shareController = VKShareDialogController()
+        shareController.text = realmMovie?.realmName
+        shareController.uploadImages = [VKUploadImage(image: detailBackImageView.image, andParams: nil) ?? ""]
+        shareController.completionHandler = { VKShareDialogController, result in
+            self.dismiss(animated: true, completion: nil)
+        }
+        present(shareController, animated: true, completion: nil)
+    }
     
     private func setGenresCollection() {
         genresCollectionView.delegate = self
         genresCollectionView.dataSource = self
     }
 
+    private func setShareButton(){
+        if VKSdk.isLoggedIn() {
+            shareButton.isHidden = false
+        } else {
+            shareButton.isHidden = true
+        }
+    }
     
     private func setDetails() {
         detailNameLabel.text = realmMovie?.realmName

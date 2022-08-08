@@ -25,8 +25,8 @@ class ProfileViewController: UIViewController {
         vkSdkInit()
         wakeUpSession()
         setNavigationBar()
-        
     }
+    
     override func viewDidLayoutSubviews() {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
