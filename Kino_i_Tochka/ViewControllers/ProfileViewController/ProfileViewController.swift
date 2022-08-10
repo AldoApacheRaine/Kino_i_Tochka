@@ -20,10 +20,13 @@ class ProfileViewController: UIViewController {
     private let appId = "8232649"
     var profileData: Profile?
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vkSdkInit()
         wakeUpSession()
+        isLogged()
         setNavigationBar()
     }
     
@@ -40,10 +43,12 @@ class ProfileViewController: UIViewController {
     
     @IBAction func unloginButtonTapped(_ sender: Any) {
         VKSdk.forceLogout()
+        resetDefaults()
         profileNameLabel.text = "Имя"
         profileSurnameLabel.text = "Фамилия"
-        profileImageView.image = UIImage(systemName: "person.fill")
+        profileImageView.image = UIImage(named: "emptyProfile")
         authVKButton.isHidden = false
+        unloginVKButton.isHidden = true
     }
     
     private func vkSdkInit() {
@@ -53,15 +58,22 @@ class ProfileViewController: UIViewController {
         print("ВК инициализация...")
     }
     
+    private func isLogged() {
+        if VKSdk.isLoggedIn() {
+            setProfileInfo()
+            authVKButton.isHidden = true
+        } else {
+            unloginVKButton.isHidden = true
+        }
+    }
+    
     private func wakeUpSession() {
         let scope =  ["wall", "photos"]
-        VKSdk.wakeUpSession(scope) { [self] state, error in
+        VKSdk.wakeUpSession(scope) {state, error in
             if state == VKAuthorizationState.authorized {
                 print("VKAuthorizationState.authorized")
-                getInfoUser()
-                authVKButton.isHidden = true
             } else {
-                print("Проблема авторизации state \(state) error \(String(describing: error))")
+                print("Юзер не авроризован \(state) error \(String(describing: error))")
             }
         }
     }
@@ -73,23 +85,24 @@ class ProfileViewController: UIViewController {
                 print("VKAuthorizationState.initialized")
                 VKSdk.authorize(scope)
             } else {
-                print("Проблема авторизации state \(state) error \(String(describing: error))")
+                print("VKAutorize Проблема авторизации state \(state) error \(String(describing: error))")
             }
         }
     }
     
     private func getInfoUser() {
         guard let request = VKRequest(method: "users.get", parameters: ["fields":"photo_200"]) else { return }
-        request.execute(resultBlock: {
+        request.execute(resultBlock: { [unowned self]
             (response) in
             guard let user = response?.json as? NSArray else { return }
             let userParams = user[0] as? NSDictionary
             let name = userParams?["first_name"] as? String ?? ""
             let surname = userParams?["last_name"] as? String ?? ""
             let photoUrl = userParams?["photo_200"] as? String ?? ""
-            self.profileData = (Profile(first_name: name, last_name: surname, photo_200: photoUrl))
-//            print(self.profileData)
-            self.setProfileInfo()
+            defaults.set(name, forKey: KeysDefaults.firstName)
+            defaults.set(surname, forKey: KeysDefaults.lastName)
+            defaults.set(photoUrl, forKey: KeysDefaults.photo)
+            setProfileInfo()
         }, errorBlock: {
             (error) in
             print(error as Any)
@@ -97,9 +110,22 @@ class ProfileViewController: UIViewController {
     }
     
     private func setProfileInfo() {
-        profileNameLabel.text = profileData?.first_name
-        profileSurnameLabel.text = profileData?.last_name
-        profileImageView.setImageFromUrl(imageUrl: profileData?.photo_200 ?? "")
+        profileNameLabel.text = defaults.string(forKey: KeysDefaults.firstName)
+        profileSurnameLabel.text = defaults.string(forKey: KeysDefaults.lastName)
+        profileImageView.setImageFromUrl(imageUrl: (defaults.string(forKey: KeysDefaults.photo)) ?? "")
+    }
+    
+    private func resetDefaults() {
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
+    }
+    
+    private func setNavigationBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
     }
 }
 
@@ -112,6 +138,7 @@ extension ProfileViewController: VKSdkDelegate, VKSdkUIDelegate {
         if result.token != nil {
             getInfoUser()
             authVKButton.isHidden = true
+            unloginVKButton.isHidden = false
         }
     }
     
@@ -129,11 +156,5 @@ extension ProfileViewController: VKSdkDelegate, VKSdkUIDelegate {
     
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
         print(#function)
-    }
-    
-    private func setNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
     }
 }

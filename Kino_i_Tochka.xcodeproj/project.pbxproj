@@ -38,6 +38,7 @@
 		ECC76E13286F493600C7F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E12286F493600C7F7AB /* Assets.xcassets */; };
 		ECC76E16286F493600C7F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */; };
 		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
+		ECD83E7528A41A0E003D2DC3 /* KeysDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */; };
 		ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E32878CED100FEF240 /* RealmModel.swift */; };
 		ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E62878D08900FEF240 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		ECC76E15286F493600C7F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC76E17286F493600C7F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
+		ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysDefaults.swift; sourceTree = "<group>"; };
 		ECDB61E32878CED100FEF240 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		ECDB61E62878D08900FEF240 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 				ECA186302870A48A00399989 /* DetailMovieModel.swift */,
 				ECDB61E32878CED100FEF240 /* RealmModel.swift */,
 				EC65BAFD289AE7F7009BDEE2 /* ProfileModel.swift */,
+				ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */,
 				EC3A7F4A288C0E940089427A /* DetailViewController + UICollectionView.swift in Sources */,
 				EC9AD29A287F29220035948D /* Int + Extension.swift in Sources */,
+				ECD83E7528A41A0E003D2DC3 /* KeysDefaults.swift in Sources */,
 				ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */,
 				EC65BAFE289AE7F7009BDEE2 /* ProfileModel.swift in Sources */,
 				EC3A7F4E288C0F140089427A /* UIView + Gradient.swift in Sources */,
