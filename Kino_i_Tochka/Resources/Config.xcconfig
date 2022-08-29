@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  Kino_i_Tochka
+//
+//  Created by Максим Хмелев on 13.08.2022.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = XSVFQ1H-BFZM73K-GNVXEQS-XDP320B

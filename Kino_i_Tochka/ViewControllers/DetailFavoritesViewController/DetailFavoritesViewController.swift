@@ -22,10 +22,16 @@ class DetailFavoritesViewController: UIViewController {
     @IBOutlet weak var shareButton: UIButton!
     
     private let localRealm = try! Realm()
-    var realmMovie: RealmMovie?
+    internal var realmMovie: RealmMovie?
+    var filmId: Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == filmId }
+        if reamlResult.isEmpty {
+            navigationController?.popViewController(animated: true)
+        }
+        realmMovie = reamlResult.first
         setDetails()
         setGenresCollection()
         scrollView.delegate = self
@@ -60,7 +66,9 @@ class DetailFavoritesViewController: UIViewController {
         detailYearLabel?.text = String(realmMovie?.realmYear ?? 0)
         detailDescriptionLabel.text = realmMovie?.realmDescription
         detailRatingLabel.text = String(realmMovie?.realmRatingKp ?? 0)
-        detailBackImageView.setImageFromUrl(imageUrl: (realmMovie?.realmPosterUrl)!)
+        if let image = realmMovie?.realmPosterUrl {
+        detailBackImageView.setImageFromUrl(imageUrl: image)
+        }
         let (hour, min) = (realmMovie?.realmMovieLenght ?? 0).convertMinutes()
         detailLenghtLabel.text = "\(hour) ч \(min) мин"
         let checkedStars = Int (((realmMovie?.realmRatingKp ?? 0) - 1) / 2)

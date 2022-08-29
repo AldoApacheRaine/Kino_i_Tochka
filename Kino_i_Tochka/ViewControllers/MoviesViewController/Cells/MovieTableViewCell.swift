@@ -19,11 +19,43 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRetingStarStack: UIStackView!
     
     private let localRealm = try! Realm()
-    private var realmMovieArray: Results<RealmMovie>!
+    
+    weak var viewModel: MoviesCellViewModelType? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+            
+            if let name = viewModel.name {
+                movieNameLabel.text = name
+            } else {
+                movieNameLabel.text = "No data"
+            }
+            
+            movieYearLabel.text = String(viewModel.year)
+            movieRatingLabel.text = String(viewModel.rating)
+            
+            let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == viewModel.id }
+            
+            if reamlResult.first?.realmId == viewModel.id {
+                    movieLikeImage.tintColor = .red
+                }
+            
+            let (hour, min) = (viewModel.movieLength ?? 0).convertMinutes()
+            
+            movieLenghtLabel.text = "\(hour) ч \(min) мин"
+            
+            moviePosterImageView.setImageFromUrl(imageUrl: viewModel.poster)
+            
+            let checkedStars = Int((viewModel.rating - 1) / 2)
+            for i in 0...checkedStars {
+                if let image = movieRetingStarStack.subviews[i] as? UIImageView {
+                    image.image = UIImage(systemName: "star.fill")
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        realmMovieArray = localRealm.objects(RealmMovie.self)
     }
     
     override func prepareForReuse() {
@@ -37,35 +69,5 @@ class MovieTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-    }
-    
-    func cellConfugure(movie: Doc){
-        if let name = movie.name {
-            movieNameLabel.text = name
-        } else {
-            movieNameLabel.text = "No data"
-        }
-        
-        movieYearLabel.text = String(movie.year)
-        movieRatingLabel.text = String(movie.rating.kp)
-        
-        for i in realmMovieArray {
-            if i.realmId == movie.id {
-                movieLikeImage.tintColor = .red
-            }
-        }
-        
-        let (hour, min) = (movie.movieLength ?? 0).convertMinutes()
-        
-        movieLenghtLabel.text = "\(hour) ч \(min) мин"
-        
-        moviePosterImageView.setImageFromUrl(imageUrl: movie.poster.url)
-        
-        let checkedStars = Int((movie.rating.kp - 1) / 2)
-        for i in 0...checkedStars {
-            if let image = movieRetingStarStack.subviews[i] as? UIImageView {
-                image.image = UIImage(systemName: "star.fill")
-            }
-        }
     }
 }

@@ -12,16 +12,24 @@ final class Network {
     
     static let network = Network()
     
-    func fetchMovieList(url: String, parameters: [String: String], completion: @escaping (Movies) -> Void) {
-        AF.request(url, parameters: parameters).responseDecodable(of: Movies.self) { response in
+    func fetchBestMovieList(parameters: [String: String], completion: @escaping (Movies) -> Void) {
+        AF.request(Constants.mainUrl, parameters: parameters).responseDecodable(of: Movies.self) { response in
             if let movieList = try? response.result.get(){
                 completion(movieList)
             }
         }
     }
     
-    func fetchDetailMovie(url: String, parameters: [String: String], completion: @escaping (DetailMovie) -> Void) {
-        AF.request(url, parameters: parameters).responseDecodable(of: DetailMovie.self) { response in
+    func fetchNewMovieList(parameters: [String: String], completion: @escaping (Movies) -> Void) {
+        AF.request(Constants.newFilmsUrl(), parameters: parameters).responseDecodable(of: Movies.self) { response in
+            if let movieList = try? response.result.get(){
+                completion(movieList)
+            }
+        }
+    }
+    
+    func fetchDetailMovie(parameters: [String: String], completion: @escaping (DetailMovie) -> Void) {
+        AF.request(Constants.mainUrl, parameters: parameters).responseDecodable(of: DetailMovie.self) { response in
             if let detailList = try? response.result.get(){
                 completion(detailList)
             }
