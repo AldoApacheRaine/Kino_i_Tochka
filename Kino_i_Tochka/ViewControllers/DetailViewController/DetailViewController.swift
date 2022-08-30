@@ -26,9 +26,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var movieData: DetailMovie?
-    var movie = [Doc]()
+    var movie: Doc?
     private let localRealm = try! Realm()
-    private var realmMovieArray: Results<RealmMovie>!
     private var buttonSwitched : Bool = false
     
     override func viewDidLoad() {
@@ -37,8 +36,6 @@ class DetailViewController: UIViewController {
         setDetails()
         setGenresCollection()
         setPersonCollection()
-        
-        realmMovieArray = localRealm.objects(RealmMovie.self)
         isFavorite()
         scrollView.delegate = self
     }
@@ -49,9 +46,10 @@ class DetailViewController: UIViewController {
             setAndSaveRealmModel()
             likeButton.tintColor = .red
         } else {
-            for i in realmMovieArray {
-                if i.realmId == movie.first?.id {
-                    RealmManager.shared.deleteRealmModel(model: i)
+            if let movie = movie {
+                let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == movie.id }
+                if let realmMovie = reamlResult.first {
+                    RealmManager.shared.deleteRealmModel(model: realmMovie)
                 }
             }
             likeButton.tintColor = .white
@@ -70,30 +68,35 @@ class DetailViewController: UIViewController {
     
     private func setFilmParameters() -> [String: String] {
         let parameters = [
-            "search": String(movie.first!.id),
+            "field": "id",
+            "search": String(movie!.id),
             "token": Constants.token
         ]
         return parameters
     }
     
     private func getDetails() {
-        Network.network.fetchDetailMovie(url: Constants.detailUrl, parameters: setFilmParameters(), completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
+        Network.network.fetchDetailMovie(parameters: setFilmParameters(), completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
             movieData = fechedDetailMovie
             genresCollectionView.reloadData()
             personsCollectionView.reloadData()
-            playVideo(videoUrl: (movieData?.videos.trailers.first!.url)!)
+            if let video = movieData?.videos.trailers.first?.url {
+            playVideo(videoUrl: (video))
+            }
         })
     }
     
     private func setDetails() {
-        detailNameLabel.text = movie.first?.name
-        detailYearLabel?.text = String(movie.first?.year ?? 0)
-        detailDescriptionLabel.text = movie.first?.description
-        detailRatingLabel.text = String(movie.first?.rating.kp ?? 0)
-        detailBackImageView.setImageFromUrl(imageUrl: (movie.first?.poster.url)!)
-        let (hour, min) = (movie.first?.movieLength ?? 0).convertMinutes()
+        detailNameLabel.text = movie?.name
+        detailYearLabel?.text = String(movie?.year ?? 0)
+        detailDescriptionLabel.text = movie?.description
+        detailRatingLabel.text = String(movie?.rating.kp ?? 0)
+        if let imageUrl = movie?.poster.url {
+        detailBackImageView.setImageFromUrl(imageUrl: imageUrl)
+        }
+        let (hour, min) = (movie?.movieLength ?? 0).convertMinutes()
         detailLenghtLabel.text = "\(hour) ч \(min) мин"
-        let checkedStars = Int (((movie.first?.rating.kp ?? 0) - 1) / 2)
+        let checkedStars = Int (((movie?.rating.kp ?? 0) - 1) / 2)
         for i in 0...checkedStars {
             if let image = detailRatingStarStack.subviews[i] as? UIImageView {
                 image.image = UIImage(systemName: "star.fill")
@@ -109,13 +112,13 @@ class DetailViewController: UIViewController {
     
     private func setAndSaveRealmModel() {
         let realmMovie = RealmMovie()
-        realmMovie.realmName = movie.first?.name ?? "Unknown"
-        realmMovie.realmDescription = movie.first?.description ?? "Unknown"
-        realmMovie.realmId = movie.first?.id ?? 00
-        realmMovie.realmMovieLenght = movie.first?.movieLength ?? 00
-        realmMovie.realmPosterUrl = movie.first?.poster.url ?? "Unknown"
-        realmMovie.realmYear = movie.first?.year ?? 00
-        realmMovie.realmRatingKp = movie.first?.rating.kp ?? 00
+        realmMovie.realmName = movie?.name ?? "Unknown"
+        realmMovie.realmDescription = movie?.description ?? "Unknown"
+        realmMovie.realmId = movie?.id ?? 00
+        realmMovie.realmMovieLenght = movie?.movieLength ?? 00
+        realmMovie.realmPosterUrl = movie?.poster.url ?? "Unknown"
+        realmMovie.realmYear = movie?.year ?? 00
+        realmMovie.realmRatingKp = movie?.rating.kp ?? 00
         
         for i in 0...(movieData?.genres.count ?? 1) - 1 {
             realmMovie.genres.append(movieData?.genres[i].name ?? "no genre")
@@ -125,8 +128,9 @@ class DetailViewController: UIViewController {
     }
 
     private func isFavorite() {
-        for i in realmMovieArray {
-            if i.realmId == movie.first?.id {
+        if let movie = movie {
+            let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == movie.id }
+            if reamlResult.first?.realmId == movie.id {
                 likeButton.tintColor = .red
                 buttonSwitched = true
             }

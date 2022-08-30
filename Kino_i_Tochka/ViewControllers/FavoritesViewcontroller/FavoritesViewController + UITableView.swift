@@ -21,18 +21,11 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let deleteModel = realmMovieArray[indexPath.row]
         RealmManager.shared.deleteRealmModel(model: deleteModel)
         tableView.deleteRows(at: [indexPath], with: .fade)
         checkFavorites()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? DetailFavoritesViewController {
-            if let cell = sender as? FavoritesTableViewCell, let index = favoritesTableView.indexPath(for: cell)?.row{
-                destinationViewController.realmMovie = realmMovieArray[index]
-            }
-        }
     }
 }

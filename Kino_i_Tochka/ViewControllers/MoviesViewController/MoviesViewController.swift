@@ -13,17 +13,27 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var noInternetImageView: UIImageView!
     
-    var moviesData: [Doc] = []
-    var pages: Int?
-    var currentPage = 1
+    var moviesViewModel: MoviesViewModelType?
     var isDefaultChoice = true
-
+    let moviesRefreshControl: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.tintColor = .white
+        refresh.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        return refresh
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        showSpinner()
+        moviesViewModel = MoviesViewModel()
         setTableView()
         setNavigationBar()
         setSortButton()
-        setNetwork(url: Constants.bestFilmsUrl)
+        moviesViewModel?.getBestMovies(complition: { [unowned self] in
+            moviesTableView.reloadData()
+            removeSpinner()
+            
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,32 +55,39 @@ class MoviesViewController: UIViewController {
     private func setTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
+        moviesTableView.refreshControl = moviesRefreshControl
     }
     
-    private func setFilmsParameters() -> [String: String] {
-        let parameters = [
-            "page": "\(currentPage)",
-            "token": Constants.token
-        ]
-        return parameters
+    @objc private func refresh(sender: UIRefreshControl) {
+        if isDefaultChoice {
+            moviesViewModel?.getBestMovies {}
+        } else {
+            moviesViewModel?.getNewMovies {}
+        }
+        moviesTableView.reloadData()
+        sender.endRefreshing()
     }
     
     private func setSortButton() {
-        let allFilms = { [unowned self](action: UIAction) in
-            moviesData = []
-            currentPage = 1
+        let allFilms = { [unowned self] (action: UIAction) in
+            showSpinner()
+            moviesViewModel?.setDefaultMovies()
             isDefaultChoice = true
             isInternet()
-            setNetwork(url: Constants.bestFilmsUrl)
-            moviesTableView.reloadData()
+            moviesViewModel?.getBestMovies(complition: {[unowned self] in
+                moviesTableView.reloadData()
+                removeSpinner()
+            })
         }
         let lastestFilms = { [unowned self](action: UIAction) in
-            moviesData = []
-            currentPage = 1
+            showSpinner()
+            moviesViewModel?.setDefaultMovies()
             isDefaultChoice = false
             isInternet()
-            setNetwork(url: Constants.newFilmsUrl)
-            moviesTableView.reloadData()
+            moviesViewModel?.getNewMovies(complition: { [unowned self] in
+                moviesTableView.reloadData()
+                removeSpinner()
+            })
         }
         sortButton.menu = UIMenu(children: [
             UIAction(title: "Выбор редакции", state: .on, handler: allFilms),
@@ -79,28 +96,25 @@ class MoviesViewController: UIViewController {
         sortButton.showsMenuAsPrimaryAction = true
         sortButton.changesSelectionAsPrimaryAction = true
     }
-    
+
     func setPagginBestFilms() {
-        if currentPage <= pages ?? 1 {
-            currentPage += 1
-            setNetwork(url: Constants.bestFilmsUrl)
-        }
-    }
-    
-    func setPagginNewFilms() {
-        if currentPage <= pages ?? 1 {
-            currentPage += 1
-            setNetwork(url: Constants.newFilmsUrl)
-        }
-    }
-    
-    private func setNetwork(url: String) {
-        
-        Network.network.fetchMovieList(url: url, parameters: setFilmsParameters(), completion: { [unowned self] (fechedMovieList: Movies) in
-            moviesData.append(contentsOf: fechedMovieList.docs)
-            pages = fechedMovieList.pages
+        moviesViewModel?.getBestMovies(complition: {[unowned self] in
             moviesTableView.reloadData()
         })
+    }
+
+    func setPagginNewFilms() {
+        moviesViewModel?.getNewMovies(complition: { [unowned self] in
+            moviesTableView.reloadData()
+        })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? DetailViewController {
+            if let cell = sender as? MovieTableViewCell, let index = moviesTableView.indexPath(for: cell)?.row, let viewModel = moviesViewModel {
+                destinationViewController.movie = viewModel.getMovie(index: index)
+            }
+        }
     }
     
     private func setNavigationBar() {

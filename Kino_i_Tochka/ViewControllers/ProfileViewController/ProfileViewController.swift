@@ -18,7 +18,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var unloginVKButton: UIButton!
     
     private let appId = "8232649"
-    var profileData: Profile?
     
     let defaults = UserDefaults.standard
     

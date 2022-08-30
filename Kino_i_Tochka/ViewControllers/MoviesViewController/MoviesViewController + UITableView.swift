@@ -10,12 +10,14 @@ import UIKit
 
 extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        moviesData.count
+        moviesViewModel?.numberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell") as? MovieTableViewCell {
-            cell.cellConfugure(movie: moviesData[indexPath.row])
+            guard let viewModel = moviesViewModel else { return UITableViewCell() }
+            let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
+            cell.viewModel = cellViewModel
             return cell
         }
         return UITableViewCell()
@@ -26,23 +28,20 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastIndex = moviesData.count - 1
-        if indexPath.row == lastIndex {
-            isDefaultChoice ? setPagginBestFilms() : setPagginNewFilms()
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationViewController = segue.destination as? DetailViewController {
-            if let cell = sender as? MovieTableViewCell, let index = moviesTableView.indexPath(for: cell)?.row{
-                destinationViewController.movie.append(moviesData[index])
+        if let viewModel = moviesViewModel {
+            let lastIndex = viewModel.numberOfRows() - 1
+            if indexPath.row == lastIndex {
+                viewModel.pagination()
+                isDefaultChoice ? setPagginBestFilms() : setPagginNewFilms()
+                
             }
         }
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let destinationViewController = CodeDetailViewController()
-//        destinationViewController.movie = moviesData[indexPath.row]
-//        navigationController?.pushViewController(destinationViewController, animated: true)
-//    }
+
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        let destinationViewController = CodeDetailViewController()
+    //        destinationViewController.movie = moviesData[indexPath.row]
+    //        navigationController?.pushViewController(destinationViewController, animated: true)
+    //    }
 }
 

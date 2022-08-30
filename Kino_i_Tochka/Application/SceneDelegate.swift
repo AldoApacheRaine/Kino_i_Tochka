@@ -7,6 +7,8 @@
 
 import UIKit
 import VK_ios_sdk
+import CoreSpotlight
+import MobileCoreServices
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,12 +16,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
-            // Handle URL
             VKSdk.processOpen(url, fromApplication: nil)
+        }
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        if userActivity.activityType == CSSearchableItemActionType {
+            if let userInfo = userActivity.userInfo {
+                let selectedID = userInfo[CSSearchableItemActivityIdentifier] as! String
+                if let selectedID = Int(selectedID.components(separatedBy: ".").last ?? "") {
+                    if let detailVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailFavoritesViewController") as? DetailFavoritesViewController {
+                        if let tabbarViewController = (window?.rootViewController as? UITabBarController){
+                            if let viewControllers = tabbarViewController.viewControllers {
+                                let navigation = viewControllers[tabbarViewController.selectedIndex]
+                                detailVC.filmId = selectedID
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { // Change `2.0` to the desired
+                                    navigation.show(detailVC, sender: nil)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
 
+
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
