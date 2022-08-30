@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 import RealmSwift
-import VK_ios_sdk
 
 class DetailViewController: UIViewController {
     
