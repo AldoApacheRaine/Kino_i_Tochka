@@ -27,8 +27,9 @@ class DetailFavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == filmId }
-        if reamlResult.isEmpty {
+        if reamlResult.isEmpty  {
             navigationController?.popViewController(animated: true)
         }
         realmMovie = reamlResult.first
