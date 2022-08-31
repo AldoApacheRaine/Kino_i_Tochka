@@ -49,4 +49,12 @@ class FavoritesViewController: UIViewController {
             favoritesTableView.reloadData()
         }
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? DetailFavoritesViewController {
+            if let cell = sender as? FavoritesTableViewCell, let index = favoritesTableView.indexPath(for: cell)?.row{
+                destinationViewController.realmMovie = realmMovieArray[index]
+            }
+        }
+    }
 }
