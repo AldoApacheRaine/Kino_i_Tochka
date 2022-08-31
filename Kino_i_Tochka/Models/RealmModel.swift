@@ -17,5 +17,16 @@ class RealmMovie: Object {
     @Persisted var realmDescription: String = ""
     @Persisted var realmYear: Int = 0
     @Persisted var genres: List<String>
-//    @Persisted var something: String = ""
+//    @Persisted var persons = List<RealmPersons>()
+    @Persisted var realmPersonName: List<String>
+    @Persisted var realmPersonDescription: List<String?>
+    @Persisted var realmPersonEnProfession: List<String>
+    @Persisted var realmPersonPhoto: List<String>
 }
+
+//class RealmPersons: Object {
+//    @Persisted var realmName: String = ""
+//    @Persisted var realmDescription: String? = ""
+//    @Persisted var realmEnProfession: String
+//    @Persisted var realmPhoto: String
+//}

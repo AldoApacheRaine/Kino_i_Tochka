@@ -123,6 +123,13 @@ class DetailViewController: UIViewController {
             realmMovie.genres.append(movieData?.genres[i].name ?? "no genre")
         }
         
+        for i in 0...(movieData?.persons.count ?? 1) - 1 {
+            realmMovie.realmPersonName.append(movieData?.persons[i].name ?? "Unknown")
+            realmMovie.realmPersonPhoto.append(movieData?.persons[i].photo ?? "Unknown")
+            realmMovie.realmPersonEnProfession.append(movieData?.persons[i].enProfession ?? "Unknown")
+            realmMovie.realmPersonDescription.append(movieData?.persons[i].description ?? "Unknown")
+        }
+        
         RealmManager.shared.saveRealmModel(model: realmMovie)
     }
 

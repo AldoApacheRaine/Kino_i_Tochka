@@ -12,6 +12,7 @@ class PersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personDescriptionLabel: UILabel!
     @IBOutlet weak var personNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

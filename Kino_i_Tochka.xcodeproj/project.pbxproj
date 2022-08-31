@@ -42,6 +42,7 @@
 		ECC76E13286F493600C7F7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E12286F493600C7F7AB /* Assets.xcassets */; };
 		ECC76E16286F493600C7F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */; };
 		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
+		ECC9712728BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC9712628BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift */; };
 		ECCB55B528B3FE1000967FF1 /* UIActivityIndicator + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extention.swift */; };
 		ECD83E7528A41A0E003D2DC3 /* KeysDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */; };
 		ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E32878CED100FEF240 /* RealmModel.swift */; };
@@ -89,6 +90,7 @@
 		ECC76E15286F493600C7F7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC76E17286F493600C7F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
+		ECC9712628BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicator + Extention.swift"; sourceTree = "<group>"; };
 		ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysDefaults.swift; sourceTree = "<group>"; };
 		ECDB61E32878CED100FEF240 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				ECBB0EE8289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift */,
+				ECC9712628BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */,
 				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,
 				ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */,
+				ECC9712728BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
 				ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */,
 				ECBB0EE9289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift in Sources */,

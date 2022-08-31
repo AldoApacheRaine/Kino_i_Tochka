@@ -20,6 +20,7 @@ class DetailFavoritesViewController: UIViewController {
     @IBOutlet weak var detailRatingStarStack: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var personsCollectionView: UICollectionView!
     
     private let localRealm = try! Realm()
     internal var realmMovie: RealmMovie?
@@ -35,6 +36,7 @@ class DetailFavoritesViewController: UIViewController {
         realmMovie = reamlResult.first
         setDetails()
         setGenresCollection()
+        setPersonCollection()
         scrollView.delegate = self
         setShareButton()
     }
@@ -52,6 +54,11 @@ class DetailFavoritesViewController: UIViewController {
     private func setGenresCollection() {
         genresCollectionView.delegate = self
         genresCollectionView.dataSource = self
+    }
+    
+    private func setPersonCollection() {
+        personsCollectionView.delegate = self
+        personsCollectionView.dataSource = self
     }
 
     private func setShareButton(){
