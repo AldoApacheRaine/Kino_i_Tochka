@@ -18,13 +18,10 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let start = Date()
         realmMovieArray = localRealm.objects(RealmMovie.self)
         setTableView()
         checkFavorites()
         SpotlightManager.setupSpotlight(with: Array(realmMovieArray), and: "Избранные фильмы")
-        let end = Date()
-        print(" время:  \(end.timeIntervalSince1970 - start.timeIntervalSince1970 )")
     }
     
     override func viewWillAppear(_ animated: Bool) {

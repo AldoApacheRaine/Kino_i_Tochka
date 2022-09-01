@@ -17,14 +17,13 @@ class PersonsFavoritesCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-//    func cellConfugure(detail: RealmMovie) {
-//        if detail.realmPersonDescription == "Unknown" {
-//            personDescriptionLabel.text = detail.realmPersonEnProfession
-//        } else {
-//            personDescriptionLabel.text = detail.realmPersonDescription
-//        }
-//        
-//        personNameLabel.text = detail.realmPersonName
-//        personImageView.setImageFromUrl(imageUrl: detail.realmPersonPhoto)
-//    }
+    func cellConfugure(detail: RealmMovie, index: Int) {
+        if detail.realmPersonDescription[index] == "Unknown" {
+            personDescriptionLabel.text = detail.realmPersonEnProfession[index]
+        } else {
+            personDescriptionLabel.text = detail.realmPersonDescription[index]
+        }
+        personNameLabel.text = detail.realmPersonName[index]
+        personImageView.setImageFromUrl(imageUrl: detail.realmPersonPhoto[index])
+    }
 }
