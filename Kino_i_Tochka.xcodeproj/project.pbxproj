@@ -30,11 +30,11 @@
 		ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA186302870A48A00399989 /* DetailMovieModel.swift */; };
 		ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA217172871C2B900534A65 /* UIImageView + Extension.swift */; };
 		ECA217402872096600534A65 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */; };
+		ECB29D7828C1243F001AEE22 /* MoviesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB29D7728C1243F001AEE22 /* MoviesService.swift */; };
 		ECBB0EE5289D864100AF4E96 /* DetailFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EE4289D864100AF4E96 /* DetailFavoritesViewController.swift */; };
 		ECBB0EE7289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EE6289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift */; };
 		ECBB0EE9289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EE8289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift */; };
 		ECBB0EEB289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBB0EEA289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift */; };
-		ECC72C212881F83700FC8F35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC72C202881F83700FC8F35 /* Constants.swift */; };
 		ECC76E0A286F493500C7F7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E09286F493500C7F7AB /* AppDelegate.swift */; };
 		ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */; };
 		ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E0D286F493500C7F7AB /* MoviesViewController.swift */; };
@@ -76,11 +76,11 @@
 		ECA186302870A48A00399989 /* DetailMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieModel.swift; sourceTree = "<group>"; };
 		ECA217172871C2B900534A65 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		ECA2173F2872096600534A65 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECB29D7728C1243F001AEE22 /* MoviesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesService.swift; sourceTree = "<group>"; };
 		ECBB0EE4289D864100AF4E96 /* DetailFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesViewController.swift; sourceTree = "<group>"; };
 		ECBB0EE6289D87F400AF4E96 /* DetailFavoritesViewController + UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailFavoritesViewController + UICollectionView.swift"; sourceTree = "<group>"; };
 		ECBB0EE8289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECBB0EEA289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailFavoritesViewController + UIScrollView.swift"; sourceTree = "<group>"; };
-		ECC72C202881F83700FC8F35 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ECC76E06286F493500C7F7AB /* Kino_i_Tochka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino_i_Tochka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC76E09286F493500C7F7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECC76E0B286F493500C7F7AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				EC96BCC0287CAB2B0054A7A4 /* Network.swift */,
-				ECC72C202881F83700FC8F35 /* Constants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -332,6 +331,7 @@
 			children = (
 				ECDB61E62878D08900FEF240 /* RealmManager.swift */,
 				EC05272B28A7F58B000370DF /* SpotlightManager.swift */,
+				ECB29D7728C1243F001AEE22 /* MoviesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -456,7 +456,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA186312870A48A00399989 /* DetailMovieModel.swift in Sources */,
-				ECC72C212881F83700FC8F35 /* Constants.swift in Sources */,
 				ECC76E0E286F493500C7F7AB /* MoviesViewController.swift in Sources */,
 				ECBB0EE5289D864100AF4E96 /* DetailFavoritesViewController.swift in Sources */,
 				EC3A7F50288C0F510089427A /* DetailViewController + UIScrollView.swift in Sources */,
@@ -478,6 +477,7 @@
 				ECBB0EEB289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift in Sources */,
 				ECCB55B528B3FE1000967FF1 /* UIActivityIndicator + Extention.swift in Sources */,
 				ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */,
+				ECB29D7828C1243F001AEE22 /* MoviesService.swift in Sources */,
 				EC99220C289173A60075AB3E /* UIStackView + Extension.swift in Sources */,
 				ECA217182871C2B900534A65 /* UIImageView + Extension.swift in Sources */,
 				ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */,

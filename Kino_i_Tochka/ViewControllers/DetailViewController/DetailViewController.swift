@@ -65,24 +65,17 @@ class DetailViewController: UIViewController {
         personsCollectionView.dataSource = self
     }
     
-    private func setFilmParameters() -> [String: String] {
-        let parameters = [
-            "field": "id",
-            "search": String(movie!.id),
-            "token": Constants.token
-        ]
-        return parameters
-    }
-    
     private func getDetails() {
-        Network.network.fetchDetailMovie(parameters: setFilmParameters(), completion: { [unowned self] (fechedDetailMovie: DetailMovie) in
-            movieData = fechedDetailMovie
-            genresCollectionView.reloadData()
-            personsCollectionView.reloadData()
-            if let video = movieData?.videos.trailers.first?.url {
-            playVideo(videoUrl: (video))
+        if let id = movie?.id {
+            Network.network.getMovieDetails(id: id) { [unowned self] (details: DetailMovie) in
+                movieData = details
+                genresCollectionView.reloadData()
+                personsCollectionView.reloadData()
+                if let video = movieData?.videos.trailers.first?.url {
+                    playVideo(videoUrl: (video))
+                }
             }
-        })
+        }
     }
     
     private func setDetails() {

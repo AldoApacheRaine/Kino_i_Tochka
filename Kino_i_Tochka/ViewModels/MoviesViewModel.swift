@@ -14,43 +14,20 @@ class MoviesViewModel: MoviesViewModelType {
     var currentPage = 1
     var isDefaultChoice = true
     
-    
-    func setBestFilmsParameters() -> [String: String] {
-        let parameters = [
-            "field": "typeNumber",
-            "search": "1",
-            "sortField": "votes.kp",
-            "sortType": "-1",
-            "limit": "20",
-            "page": "\(currentPage)",
-            "token": Constants.token
-        ]
-        return parameters
-    }
-    
-    func setNewFilmsParameters() -> [String: String] {
-        let parameters = [
-            "limit": "20",
-            "page": "\(currentPage)",
-            "token": Constants.token
-        ]
-        return parameters
-    }
-    
     func getBestMovies(complition: @escaping() -> ()) {
-        Network.network.fetchBestMovieList(parameters: setBestFilmsParameters(), completion: { [unowned self] (fechedMovieList: Movies) in
-            movies.append(contentsOf: fechedMovieList.docs)
-            pages = fechedMovieList.pages
+        Network.network.getBestMovies(page: currentPage) { (movieList: Movies) in
+            self.movies.append(contentsOf: movieList.docs)
+            self.pages = movieList.pages
             complition()
-        })
+        }
     }
     
     func getNewMovies(complition: @escaping() -> ()) {
-        Network.network.fetchNewMovieList(parameters: setNewFilmsParameters(), completion: { [unowned self] (fechedMovieList: Movies) in
-            movies.append(contentsOf: fechedMovieList.docs)
-            pages = fechedMovieList.pages
+        Network.network.getNewMovies(page: currentPage) { (movieList: Movies) in
+            self.movies.append(contentsOf: movieList.docs)
+            self.pages = movieList.pages
             complition()
-        })
+        }
     }
     
     func numberOfRows() -> Int {

@@ -7,37 +7,64 @@
 
 import Foundation
 import Alamofire
+import Moya
+
 
 final class Network {
     
     static let network = Network()
-    
-    func fetchBestMovieList(parameters: [String: String], completion: @escaping (Movies) -> Void) {
-        AF.request(Constants.mainUrl, parameters: parameters).responseDecodable(of: Movies.self) { response in
-            if let movieList = try? response.result.get(){
-                completion(movieList)
-            }
-        }
-    }
-    
-    func fetchNewMovieList(parameters: [String: String], completion: @escaping (Movies) -> Void) {
-        AF.request(Constants.newFilmsUrl(), parameters: parameters).responseDecodable(of: Movies.self) { response in
-            if let movieList = try? response.result.get(){
-                completion(movieList)
-            }
-        }
-    }
-    
-    func fetchDetailMovie(parameters: [String: String], completion: @escaping (DetailMovie) -> Void) {
-        AF.request(Constants.mainUrl, parameters: parameters).responseDecodable(of: DetailMovie.self) { response in
-            if let detailList = try? response.result.get(){
-                completion(detailList)
-            }
-        }
-    }
-    
+    var moviesProvider = MoyaProvider<MoviesService>()
+
     func isConnectedToInternet() -> Bool {
         return NetworkReachabilityManager()?.isReachable ?? false
+    }
+    
+    func getBestMovies(page: Int, complition: @escaping (Movies) -> Void) {
+        moviesProvider.request( .bestMovies(page: page)) { (result) in
+            switch result {
+            case let .success(response):
+                do {
+                    let json = try JSONDecoder().decode(Movies.self, from: response.data)
+                    complition(json)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func getNewMovies(page: Int, complition: @escaping (Movies) -> Void) {
+        moviesProvider.request( .newMovies(page: page)) { (result) in
+            switch result {
+            case let .success(response):
+                do {
+                    let json = try JSONDecoder().decode(Movies.self, from: response.data)
+                    complition(json)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func getMovieDetails(id: Int, complition: @escaping (DetailMovie) -> Void) {
+        moviesProvider.request( .detailMovie(id: id)) { (result) in
+            switch result {
+            case let .success(response):
+                do {
+                    let json = try JSONDecoder().decode(DetailMovie.self, from: response.data)
+                    complition(json)
+                } catch let error {
+                    print(error)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }
     

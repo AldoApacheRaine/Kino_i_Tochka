@@ -12,10 +12,11 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var noInternetImageView: UIImageView!
-    
+        
     var moviesViewModel: MoviesViewModelType?
     var isDefaultChoice = true
-    let moviesRefreshControl: UIRefreshControl = {
+    
+    lazy var moviesRefreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.tintColor = .white
         refresh.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
@@ -32,7 +33,6 @@ class MoviesViewController: UIViewController {
         moviesViewModel?.getBestMovies(complition: { [unowned self] in
             moviesTableView.reloadData()
             removeSpinner()
-            
         })
     }
     

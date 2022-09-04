@@ -10,5 +10,6 @@ pod 'Alamofire'
 pod 'Kingfisher'
 pod 'RealmSwift', '~>10'
 pod "VK-ios-sdk"
+pod 'Moya', '~> 15.0'
 
 end
