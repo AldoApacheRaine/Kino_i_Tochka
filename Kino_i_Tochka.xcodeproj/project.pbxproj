@@ -18,6 +18,8 @@
 		EC3A7F4C288C0ED10089427A /* FavoritesViewController + UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A7F4B288C0ED10089427A /* FavoritesViewController + UITableView.swift */; };
 		EC3A7F4E288C0F140089427A /* UIView + Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A7F4D288C0F140089427A /* UIView + Gradient.swift */; };
 		EC3A7F50288C0F510089427A /* DetailViewController + UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A7F4F288C0F510089427A /* DetailViewController + UIScrollView.swift */; };
+		EC542A8228CCB2DB00B6AB0C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC542A8128CCB2DB00B6AB0C /* AuthService.swift */; };
+		EC542A8428CCB38C00B6AB0C /* NSNotificationsNames + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC542A8328CCB38C00B6AB0C /* NSNotificationsNames + Extension.swift */; };
 		EC65BAFC289AE247009BDEE2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC65BAFB289AE247009BDEE2 /* ProfileViewController.swift */; };
 		EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */; };
 		EC96BCC1287CAB2B0054A7A4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BCC0287CAB2B0054A7A4 /* Network.swift */; };
@@ -43,7 +45,7 @@
 		ECC76E16286F493600C7F7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC76E14286F493600C7F7AB /* LaunchScreen.storyboard */; };
 		ECC76E24286F5BCF00C7F7AB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */; };
 		ECC9712728BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC9712628BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift */; };
-		ECCB55B528B3FE1000967FF1 /* UIActivityIndicator + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extention.swift */; };
+		ECCB55B528B3FE1000967FF1 /* UIActivityIndicator + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extension.swift */; };
 		ECD83E7528A41A0E003D2DC3 /* KeysDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */; };
 		ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E32878CED100FEF240 /* RealmModel.swift */; };
 		ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDB61E62878D08900FEF240 /* RealmManager.swift */; };
@@ -64,6 +66,8 @@
 		EC3A7F4B288C0ED10089427A /* FavoritesViewController + UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesViewController + UITableView.swift"; sourceTree = "<group>"; };
 		EC3A7F4D288C0F140089427A /* UIView + Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Gradient.swift"; sourceTree = "<group>"; };
 		EC3A7F4F288C0F510089427A /* DetailViewController + UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController + UIScrollView.swift"; sourceTree = "<group>"; };
+		EC542A8128CCB2DB00B6AB0C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		EC542A8328CCB38C00B6AB0C /* NSNotificationsNames + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificationsNames + Extension.swift"; sourceTree = "<group>"; };
 		EC65BAFB289AE247009BDEE2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EC67B0BA286F63EB00C76AC8 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		EC96BCC0287CAB2B0054A7A4 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -91,7 +95,7 @@
 		ECC76E17286F493600C7F7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECC76E23286F5BCF00C7F7AB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		ECC9712628BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsFavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
-		ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicator + Extention.swift"; sourceTree = "<group>"; };
+		ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicator + Extension.swift"; sourceTree = "<group>"; };
 		ECD83E7428A41A0E003D2DC3 /* KeysDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysDefaults.swift; sourceTree = "<group>"; };
 		ECDB61E32878CED100FEF240 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		ECDB61E62878D08900FEF240 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -234,7 +238,8 @@
 				EC9AD299287F29220035948D /* Int + Extension.swift */,
 				EC3A7F4D288C0F140089427A /* UIView + Gradient.swift */,
 				EC99220B289173A60075AB3E /* UIStackView + Extension.swift */,
-				ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extention.swift */,
+				ECCB55B428B3FE1000967FF1 /* UIActivityIndicator + Extension.swift */,
+				EC542A8328CCB38C00B6AB0C /* NSNotificationsNames + Extension.swift */,
 			);
 			path = "UIKit + Extensions";
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				ECDB61E62878D08900FEF240 /* RealmManager.swift */,
 				EC05272B28A7F58B000370DF /* SpotlightManager.swift */,
 				ECB29D7728C1243F001AEE22 /* MoviesService.swift */,
+				EC542A8128CCB2DB00B6AB0C /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -475,7 +481,8 @@
 				EC67B0BB286F63EB00C76AC8 /* MovieTableViewCell.swift in Sources */,
 				EC97E69C2874AF70007F43DC /* GenresCollectionViewCell.swift in Sources */,
 				ECBB0EEB289D8A3100AF4E96 /* DetailFavoritesViewController + UIScrollView.swift in Sources */,
-				ECCB55B528B3FE1000967FF1 /* UIActivityIndicator + Extention.swift in Sources */,
+				ECCB55B528B3FE1000967FF1 /* UIActivityIndicator + Extension.swift in Sources */,
+				EC542A8428CCB38C00B6AB0C /* NSNotificationsNames + Extension.swift in Sources */,
 				ECDB61E72878D08900FEF240 /* RealmManager.swift in Sources */,
 				ECB29D7828C1243F001AEE22 /* MoviesService.swift in Sources */,
 				EC99220C289173A60075AB3E /* UIStackView + Extension.swift in Sources */,
@@ -485,6 +492,7 @@
 				ECC9712728BFE5A400F6A02C /* PersonsFavoritesCollectionViewCell.swift in Sources */,
 				ECC76E0C286F493500C7F7AB /* SceneDelegate.swift in Sources */,
 				ECDB61E42878CED100FEF240 /* RealmModel.swift in Sources */,
+				EC542A8228CCB2DB00B6AB0C /* AuthService.swift in Sources */,
 				ECBB0EE9289D893D00AF4E96 /* GenresFavoritesCollectionViewCell.swift in Sources */,
 				EC9818D42879BEB100803059 /* FavoritesTableViewCell.swift in Sources */,
 				EC9818D22879BE2600803059 /* FavoritesViewController.swift in Sources */,

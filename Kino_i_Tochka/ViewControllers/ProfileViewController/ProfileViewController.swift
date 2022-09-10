@@ -16,17 +16,28 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var authVKButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var unloginVKButton: UIButton!
-    
-    private let appId = "8232649"
-    
+        
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkSdkInit()
-        wakeUpSession()
         isLogged()
         setNavigationBar()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(onProfileUpdate(_:)), name: .onProfileUpdate, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func onProfileUpdate(_ n: Notification) {
+        setProfileInfo()
+        authVKButton.isHidden = true
+        unloginVKButton.isHidden = false
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,30 +61,12 @@ class ProfileViewController: UIViewController {
         unloginVKButton.isHidden = true
     }
     
-    private func vkSdkInit() {
-        let vkSdk = VKSdk.initialize(withAppId: appId)
-        vkSdk?.register(self)
-        vkSdk?.uiDelegate = self
-        print("ВК инициализация...")
-    }
-    
     private func isLogged() {
         if VKSdk.isLoggedIn() {
             setProfileInfo()
             authVKButton.isHidden = true
         } else {
             unloginVKButton.isHidden = true
-        }
-    }
-    
-    private func wakeUpSession() {
-        let scope =  ["wall", "photos"]
-        VKSdk.wakeUpSession(scope) {state, error in
-            if state == VKAuthorizationState.authorized {
-                print("VKAuthorizationState.authorized")
-            } else {
-                print("Юзер не авроризован \(state) error \(String(describing: error))")
-            }
         }
     }
     
@@ -87,25 +80,6 @@ class ProfileViewController: UIViewController {
                 print("VKAutorize Проблема авторизации state \(state) error \(String(describing: error))")
             }
         }
-    }
-    
-    private func getInfoUser() {
-        guard let request = VKRequest(method: "users.get", parameters: ["fields":"photo_200"]) else { return }
-        request.execute(resultBlock: { [unowned self]
-            (response) in
-            guard let user = response?.json as? NSArray else { return }
-            let userParams = user[0] as? NSDictionary
-            let name = userParams?["first_name"] as? String ?? ""
-            let surname = userParams?["last_name"] as? String ?? ""
-            let photoUrl = userParams?["photo_200"] as? String ?? ""
-            defaults.set(name, forKey: KeysDefaults.firstName)
-            defaults.set(surname, forKey: KeysDefaults.lastName)
-            defaults.set(photoUrl, forKey: KeysDefaults.photo)
-            setProfileInfo()
-        }, errorBlock: {
-            (error) in
-            print(error as Any)
-        })
     }
     
     private func setProfileInfo() {
@@ -128,32 +102,3 @@ class ProfileViewController: UIViewController {
     }
 }
 
-// MARK: - VKSdkDelegate
-
-extension ProfileViewController: VKSdkDelegate, VKSdkUIDelegate {
-    
-    func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
-        print(#function)
-        if result.token != nil {
-            getInfoUser()
-            authVKButton.isHidden = true
-            unloginVKButton.isHidden = false
-        }
-    }
-    
-    func vkSdkUserAuthorizationFailed() {
-        print(#function)
-    }
-    
-// MARK: - VKSdkUIDelegate
-    
-    func vkSdkShouldPresent(_ controller: UIViewController!) {
-        print(#function)
-        self.present(controller, animated: true, completion: nil)
-
-    }
-    
-    func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
-        print(#function)
-    }
-}

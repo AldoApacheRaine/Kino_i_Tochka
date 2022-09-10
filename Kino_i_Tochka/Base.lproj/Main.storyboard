@@ -219,7 +219,7 @@
                     <navigationItem key="navigationItem" title="Кино и точка." id="N1Q-pG-9vu">
                         <barButtonItem key="backBarButtonItem" title=" " id="ef3-34-ani"/>
                         <barButtonItem key="rightBarButtonItem" image="arrow.up.arrow.down" catalog="system" style="plain" id="o0Y-zz-Nmh">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" hasAttributedTitle="YES" id="oGf-vN-ycO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" hasAttributedTitle="YES" id="oGf-vN-ycO">
                                 <rect key="frame" x="322" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -783,7 +783,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoW-ry-1UJ" customClass="Gradient" customModule="Kino_i_Tochka" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="497" width="414" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="jsy-pp-KRc"/>
@@ -857,7 +857,22 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" id="OU1-lI-pdt"/>
+                    <navigationItem key="navigationItem" id="OU1-lI-pdt">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="LrR-vG-frc">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ySg-C9-TeE">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" image="square.and.arrow.up.fill" catalog="system" imagePadding="13">
+                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="shareButtonTapped:" destination="qW2-4b-T6k" eventType="touchUpInside" id="cw0-qh-YfZ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="detailBackImageView" destination="xno-oD-6UX" id="ucZ-Bn-tep"/>
                         <outlet property="detailDescriptionLabel" destination="47y-XC-Bl4" id="gVJ-ze-IYf"/>
@@ -871,6 +886,7 @@
                         <outlet property="likeButton" destination="3MJ-Jl-YXl" id="peD-I2-38c"/>
                         <outlet property="personsCollectionView" destination="qwy-7U-gZL" id="K7W-0l-VPc"/>
                         <outlet property="scrollView" destination="ydX-ka-j9o" id="XfJ-sF-fb1"/>
+                        <outlet property="shareButton" destination="ySg-C9-TeE" id="7q8-8k-kkp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dcn-Vl-XMt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1358,7 +1374,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfI-bY-O5d" customClass="Gradient" customModule="Kino_i_Tochka" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="212" width="414" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="ThD-ok-PKx"/>
@@ -1429,7 +1445,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="xzD-ao-XzX">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="oAE-4v-Xp8">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="oO4-hA-P3T">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="oO4-hA-P3T">
                                 <rect key="frame" x="346" y="5" width="48" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>

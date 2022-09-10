@@ -1,5 +1,5 @@
 //
-//  UIActivityIndicator + Extention.swift
+//  UIActivityIndicator + Extension.swift
 //  Kino_i_Tochka
 //
 //  Created by Максим Хмелев on 22.08.2022.

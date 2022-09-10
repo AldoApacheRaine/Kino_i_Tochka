@@ -7,12 +7,14 @@
 
 import UIKit
 import RealmSwift
+import VK_ios_sdk
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    let authService = AppAuthService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        authService.vkSdkInit(uiDelegate: self, handler: self)
         let config = Realm.Configuration(
           schemaVersion: 0,
           deleteRealmIfMigrationNeeded: true
@@ -37,5 +39,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 }
+
+extension AppDelegate: VKSdkUIDelegate{
+    func vkSdkShouldPresent(_ controller: UIViewController!) {
+        let scene = UIApplication.shared.connectedScenes.first
+        if let sd : SceneDelegate = (scene?.delegate as? SceneDelegate) {
+            sd.window?.rootViewController?.show(controller, sender: nil)
+        }
+    }
+    
+    func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
+        print(#function)
+    }
+}
+
+extension AppDelegate: AppAuthServiceSessionHandler {
+    
+    func onWakeupSession() {
+    }
+    
+    func onWakeupSessionFailed() {
+    }
+}
+
+
 
 

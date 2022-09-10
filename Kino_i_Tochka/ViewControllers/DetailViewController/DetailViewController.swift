@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import RealmSwift
+import VK_ios_sdk
 
 class DetailViewController: UIViewController {
     
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genresCollectionView: UICollectionView!
     @IBOutlet weak var personsCollectionView: UICollectionView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var detailRatingStarStack: UIStackView!
     @IBOutlet weak var detailVideoWV: WKWebView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -37,7 +39,24 @@ class DetailViewController: UIViewController {
         setPersonCollection()
         isFavorite()
         scrollView.delegate = self
+        isLogged()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isFavorite()
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        let shareController = VKShareDialogController()
+        shareController.text = movie?.name
+        shareController.uploadImages = [VKUploadImage(image: detailBackImageView.image, andParams: nil) ?? ""]
+        shareController.completionHandler = { VKShareDialogController, result in
+            self.dismiss(animated: true, completion: nil)
+        }
+        present(shareController, animated: true, completion: nil)
+    }
+
     
     @IBAction func likeButtonTapped(_ sender: Any) {
         buttonSwitched = !buttonSwitched
@@ -63,6 +82,14 @@ class DetailViewController: UIViewController {
     private func setPersonCollection() {
         personsCollectionView.delegate = self
         personsCollectionView.dataSource = self
+    }
+    
+    private func isLogged() {
+        if VKSdk.isLoggedIn() {
+            shareButton.isHidden = false
+        } else {
+            shareButton.isHidden = true
+        }
     }
     
     private func getDetails() {
