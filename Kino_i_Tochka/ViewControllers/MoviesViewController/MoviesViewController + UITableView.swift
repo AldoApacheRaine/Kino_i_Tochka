@@ -10,14 +10,12 @@ import UIKit
 
 extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        moviesViewModel?.numberOfRows() ?? 0
+        moviesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell") as? MovieTableViewCell {
-            guard let viewModel = moviesViewModel else { return UITableViewCell() }
-            let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
-            cell.viewModel = cellViewModel
+            cell.cellConfigure(moviesData[indexPath.row])
             return cell
         }
         return UITableViewCell()
@@ -28,20 +26,13 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let viewModel = moviesViewModel {
-            let lastIndex = viewModel.numberOfRows() - 1
-            if indexPath.row == lastIndex {
-                viewModel.pagination()
-                isDefaultChoice ? setPagginBestFilms() : setPagginNewFilms()
-                
+        let lastIndex = moviesData.count - 1
+        if indexPath.row == lastIndex {
+            if currentPage < pages ?? 1 {
+                currentPage += 1
             }
+            isDefaultChoice ? getBestFilms() : getNewFilms()
         }
     }
-
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let destinationViewController = CodeDetailViewController()
-    //        destinationViewController.movie = moviesData[indexPath.row]
-    //        navigationController?.pushViewController(destinationViewController, animated: true)
-    //    }
 }
 

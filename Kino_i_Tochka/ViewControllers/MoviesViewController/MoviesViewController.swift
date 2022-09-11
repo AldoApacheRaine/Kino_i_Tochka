@@ -12,8 +12,10 @@ class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var noInternetImageView: UIImageView!
-        
-    var moviesViewModel: MoviesViewModelType?
+    
+    var moviesData: [Doc] = []
+    var pages: Int?
+    var currentPage = 1
     var isDefaultChoice = true
     
     lazy var moviesRefreshControl: UIRefreshControl = {
@@ -26,14 +28,10 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showSpinner()
-        moviesViewModel = MoviesViewModel()
         setTableView()
         setNavigationBar()
         setSortButton()
-        moviesViewModel?.getBestMovies(complition: { [unowned self] in
-            moviesTableView.reloadData()
-            removeSpinner()
-        })
+        getBestFilms()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +50,24 @@ class MoviesViewController: UIViewController {
         }
     }
     
+    func getBestFilms() {
+        Network.network.getBestMovies(page: currentPage) { [unowned self] (films: Movies) in
+            moviesData.append(contentsOf: films.docs)
+            pages = films.pages
+            moviesTableView.reloadData()
+            removeSpinner()
+        }
+    }
+    
+    func getNewFilms() {
+        Network.network.getNewMovies(page: currentPage) { [unowned self] (films: Movies) in
+            moviesData.append(contentsOf: films.docs)
+            pages = films.pages
+            moviesTableView.reloadData()
+            removeSpinner()
+        }
+    }
+    
     private func setTableView() {
         moviesTableView.dataSource = self
         moviesTableView.delegate = self
@@ -60,34 +76,29 @@ class MoviesViewController: UIViewController {
     
     @objc private func refresh(sender: UIRefreshControl) {
         if isDefaultChoice {
-            moviesViewModel?.getBestMovies {}
+            getBestFilms()
         } else {
-            moviesViewModel?.getNewMovies {}
+            getNewFilms()
         }
-        moviesTableView.reloadData()
         sender.endRefreshing()
     }
     
     private func setSortButton() {
         let allFilms = { [unowned self] (action: UIAction) in
             showSpinner()
-            moviesViewModel?.setDefaultMovies()
+            moviesData = []
+            currentPage = 1
             isDefaultChoice = true
             isInternet()
-            moviesViewModel?.getBestMovies(complition: {[unowned self] in
-                moviesTableView.reloadData()
-                removeSpinner()
-            })
+            getBestFilms()
         }
         let lastestFilms = { [unowned self](action: UIAction) in
             showSpinner()
-            moviesViewModel?.setDefaultMovies()
+            moviesData = []
+            currentPage = 1
             isDefaultChoice = false
             isInternet()
-            moviesViewModel?.getNewMovies(complition: { [unowned self] in
-                moviesTableView.reloadData()
-                removeSpinner()
-            })
+            getNewFilms()
         }
         sortButton.menu = UIMenu(children: [
             UIAction(title: "Выбор редакции", state: .on, handler: allFilms),
@@ -96,23 +107,11 @@ class MoviesViewController: UIViewController {
         sortButton.showsMenuAsPrimaryAction = true
         sortButton.changesSelectionAsPrimaryAction = true
     }
-
-    func setPagginBestFilms() {
-        moviesViewModel?.getBestMovies(complition: {[unowned self] in
-            moviesTableView.reloadData()
-        })
-    }
-
-    func setPagginNewFilms() {
-        moviesViewModel?.getNewMovies(complition: { [unowned self] in
-            moviesTableView.reloadData()
-        })
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationViewController = segue.destination as? DetailViewController {
-            if let cell = sender as? MovieTableViewCell, let index = moviesTableView.indexPath(for: cell)?.row, let viewModel = moviesViewModel {
-                destinationViewController.movie = viewModel.getMovie(index: index)
+            if let cell = sender as? MovieTableViewCell, let index = moviesTableView.indexPath(for: cell)?.row {
+                destinationViewController.movie = moviesData[index]
             }
         }
     }

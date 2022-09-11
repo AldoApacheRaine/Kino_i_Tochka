@@ -167,31 +167,36 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Dtn-Az-JmU">
-                                                    <rect key="frame" x="368" y="66.5" width="30" height="27.5"/>
-                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-lZ-4s5">
+                                                    <rect key="frame" x="348" y="65" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="fHJ-Ea-be9"/>
-                                                        <constraint firstAttribute="height" constant="30" id="hqK-J7-6Cm"/>
+                                                        <constraint firstAttribute="width" constant="30" id="dpA-HL-ssd"/>
+                                                        <constraint firstAttribute="height" constant="30" id="igs-Gv-Is6"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="movieLikeButtonTapped:" destination="Gz1-Fc-3Ue" eventType="touchUpInside" id="rzM-y7-X77"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="wOQ-BM-ibV" secondAttribute="bottom" id="FS2-j4-qE8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8cb-lZ-4s5" secondAttribute="trailing" constant="16" id="Is4-3x-raP"/>
                                                 <constraint firstItem="wOQ-BM-ibV" firstAttribute="leading" secondItem="AW9-L8-h23" secondAttribute="leading" constant="24" id="Jeo-YH-VTR"/>
                                                 <constraint firstItem="wOQ-BM-ibV" firstAttribute="top" secondItem="AW9-L8-h23" secondAttribute="topMargin" id="SJA-sJ-IMe"/>
-                                                <constraint firstItem="Dtn-Az-JmU" firstAttribute="centerY" secondItem="AW9-L8-h23" secondAttribute="centerY" id="ci9-nT-hLu"/>
+                                                <constraint firstItem="8cb-lZ-4s5" firstAttribute="centerY" secondItem="AW9-L8-h23" secondAttribute="centerY" id="Uum-uR-uOh"/>
                                                 <constraint firstItem="ZLa-cm-r5i" firstAttribute="leading" secondItem="wOQ-BM-ibV" secondAttribute="trailing" constant="16" id="dr0-Q8-vAn"/>
                                                 <constraint firstItem="ZLa-cm-r5i" firstAttribute="width" secondItem="AW9-L8-h23" secondAttribute="width" multiplier="0.5" id="gw0-5k-wqd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ZLa-cm-r5i" secondAttribute="bottom" id="m5n-ka-pFH"/>
                                                 <constraint firstItem="ZLa-cm-r5i" firstAttribute="top" secondItem="AW9-L8-h23" secondAttribute="topMargin" id="oqn-FD-eXl"/>
-                                                <constraint firstAttribute="trailing" secondItem="Dtn-Az-JmU" secondAttribute="trailing" constant="16" id="pQn-O6-oZZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="movieLenghtLabel" destination="jaP-LM-5eY" id="IVX-VJ-9l5"/>
-                                            <outlet property="movieLikeImage" destination="Dtn-Az-JmU" id="csq-Ca-yHz"/>
+                                            <outlet property="movieLikeButton" destination="8cb-lZ-4s5" id="nKu-M1-bhl"/>
                                             <outlet property="movieNameLabel" destination="tUy-F2-Ucn" id="CbX-6b-C5F"/>
                                             <outlet property="moviePosterImageView" destination="wOQ-BM-ibV" id="5fq-qS-SY3"/>
                                             <outlet property="movieRatingLabel" destination="XcS-Zp-f83" id="yMP-wz-W9U"/>

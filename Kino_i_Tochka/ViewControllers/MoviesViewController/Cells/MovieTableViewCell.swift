@@ -10,7 +10,7 @@ import RealmSwift
 
 class MovieTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var movieLikeImage: UIImageView!
+    @IBOutlet weak var movieLikeButton: UIButton!
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieLenghtLabel: UILabel!
@@ -20,40 +20,37 @@ class MovieTableViewCell: UITableViewCell {
     
     private let localRealm = try! Realm()
     
-    weak var viewModel: MoviesCellViewModelType? {
-        willSet(viewModel) {
-            guard let viewModel = viewModel else { return }
-            
-            if let name = viewModel.name {
-                movieNameLabel.text = name
-            } else {
-                movieNameLabel.text = "No data"
+    func cellConfigure(_ movieData: Doc) {
+        
+        if let name = movieData.name {
+            movieNameLabel.text = name
+        } else {
+            movieNameLabel.text = "No data"
+        }
+        
+        movieYearLabel.text = String(movieData.year)
+        movieRatingLabel.text = String(movieData.rating.kp)
+        
+        let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == movieData.id }
+        
+        if reamlResult.first?.realmId == movieData.id {
+                movieLikeButton.tintColor = .red
             }
-            
-            movieYearLabel.text = String(viewModel.year)
-            movieRatingLabel.text = String(viewModel.rating)
-            
-            let reamlResult = localRealm.objects(RealmMovie.self).where { $0.realmId == viewModel.id }
-            
-            if reamlResult.first?.realmId == viewModel.id {
-                    movieLikeImage.tintColor = .red
-                }
-            
-            let (hour, min) = (viewModel.movieLength ?? 0).convertMinutes()
-            
-            movieLenghtLabel.text = "\(hour) ч \(min) мин"
-            
-            moviePosterImageView.setImageFromUrl(imageUrl: viewModel.poster)
-            
-            let checkedStars = Int((viewModel.rating - 1) / 2)
-            for i in 0...checkedStars {
-                if let image = movieRetingStarStack.subviews[i] as? UIImageView {
-                    image.image = UIImage(systemName: "star.fill")
-                }
+        
+        let (hour, min) = (movieData.movieLength ?? 0).convertMinutes()
+        
+        movieLenghtLabel.text = "\(hour) ч \(min) мин"
+        
+        moviePosterImageView.setImageFromUrl(imageUrl: movieData.poster.url)
+        
+        let checkedStars = Int((movieData.rating.kp - 1) / 2)
+        for i in 0...checkedStars {
+            if let image = movieRetingStarStack.subviews[i] as? UIImageView {
+                image.image = UIImage(systemName: "star.fill")
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -63,11 +60,14 @@ class MovieTableViewCell: UITableViewCell {
         for case let view as UIImageView in movieRetingStarStack.subviews {
             view.image = (UIImage(systemName: "star"))
         }
-        movieLikeImage.tintColor = .white
+        movieLikeButton.tintColor = .white
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+    }
+    @IBAction func movieLikeButtonTapped(_ sender: Any) {
+        print("TAPPED")
     }
 }
