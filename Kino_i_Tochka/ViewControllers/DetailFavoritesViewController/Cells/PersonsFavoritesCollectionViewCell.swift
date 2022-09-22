@@ -18,7 +18,7 @@ class PersonsFavoritesCollectionViewCell: UICollectionViewCell {
     }
     
     func cellConfugure(detail: RealmMovie, index: Int) {
-        if detail.realmPersonDescription[index] == "Unknown" {
+        if detail.realmPersonDescription[index] == "Unknown" || detail.realmPersonDescription[index] == nil {
             personDescriptionLabel.text = detail.realmPersonEnProfession[index]
         } else {
             personDescriptionLabel.text = detail.realmPersonDescription[index]

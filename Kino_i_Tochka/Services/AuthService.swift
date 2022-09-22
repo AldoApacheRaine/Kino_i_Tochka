@@ -47,10 +47,6 @@ extension AppAuthService: VKSdkDelegate  {
         print(#function)
         if result.token != nil {
             getInfoUser()
-
-//            NotificationCenter.default.post(name: Notification.Name("buttonsState"), object: nil)
-//            authVKButton.isHidden = true
-//            unloginVKButton.isHidden = false
         }
     }
     

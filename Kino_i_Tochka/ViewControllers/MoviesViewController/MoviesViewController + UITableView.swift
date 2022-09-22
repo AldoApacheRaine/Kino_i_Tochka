@@ -16,6 +16,11 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell") as? MovieTableViewCell {
             cell.cellConfigure(moviesData[indexPath.row])
+            cell.favButtonPressed = { [self] in
+                cell.saveAndDelRealmModel(moviesData[indexPath.row])
+            }
+            cell.delDelegate = self
+            cell.saveDelegate = self
             return cell
         }
         return UITableViewCell()

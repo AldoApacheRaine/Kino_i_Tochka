@@ -159,6 +159,9 @@ class DetailViewController: UIViewController {
             if reamlResult.first?.realmId == movie.id {
                 likeButton.tintColor = .red
                 buttonSwitched = true
+            } else {
+                buttonSwitched = false
+                likeButton.tintColor = .white
             }
         }
     }
